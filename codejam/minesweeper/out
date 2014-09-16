@@ -1,0 +1,843 @@
+Case #1:
+Impossible
+Case #2:
+Impossible
+Case #3:
+c . x x 
+. . x x 
+. . x x 
+. . x x 
+. . x x 
+Case #4:
+Impossible
+Case #5:
+x x 
+x x 
+x x 
+x x 
+x x 
+Case #6:
+c . x 
+. . x 
+. . x 
+. . x 
+x x x 
+Case #7:
+Impossible
+Case #8:
+c . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+x x x x x 
+Case #9:
+c . . x x 
+. . . x x 
+. . . x x 
+. . . x x 
+Case #10:
+c . . . 
+. . . . 
+. . . . 
+Case #11:
+Impossible
+Case #12:
+Impossible
+Case #13:
+c . . x 
+. . . x 
+. . . x 
+x x x x 
+Case #14:
+Impossible
+Case #15:
+c . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+x x x x x 
+Case #16:
+c . . x 
+. . . x 
+. . . x 
+. . . x 
+x x x x 
+Case #17:
+Impossible
+Case #18:
+Impossible
+Case #19:
+c . x 
+. . x 
+. . x 
+. . x 
+. . x 
+Case #20:
+c . x x 
+. . x x 
+. . x x 
+x x x x 
+x x x x 
+Case #21:
+Impossible
+Case #22:
+c 
+. 
+. 
+. 
+x 
+Case #23:
+c . . . 
+. . . . 
+. . . . 
+. . . . 
+. . . x 
+Case #24:
+Impossible
+Case #25:
+c 
+. 
+. 
+Case #26:
+c . . 
+. . . 
+. . . 
+. . . 
+x x x 
+Case #27:
+x x x x 
+x x x x 
+Case #28:
+c . . x 
+Case #29:
+Impossible
+Case #30:
+x x 
+x x 
+x x 
+x x 
+Case #31:
+c . x 
+Case #32:
+Impossible
+Case #33:
+c . x x x 
+. . x x x 
+. . x x x 
+x x x x x 
+Case #34:
+c . . x 
+. . . x 
+. . . x 
+. . . x 
+Case #35:
+c . . . 
+. . . . 
+. . . . 
+. . . . 
+. . x x 
+Case #36:
+c . . x x 
+. . . x x 
+. . . x x 
+. . . x x 
+. . . x x 
+Case #37:
+c . . . 
+. . . . 
+. . x x 
+Case #38:
+c . 
+. . 
+. . 
+. . 
+. . 
+Case #39:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . x x 
+Case #40:
+x x x x 
+x x x x 
+x x x x 
+x x x x 
+Case #41:
+Impossible
+Case #42:
+x x x 
+x x x 
+x x x 
+Case #43:
+c . 
+Case #44:
+c 
+. 
+. 
+. 
+. 
+Case #45:
+Impossible
+Case #46:
+c . x x x 
+. . x x x 
+. . x x x 
+Case #47:
+c . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+x x x x x 
+Case #48:
+Impossible
+Case #49:
+c . . x 
+. . . x 
+x x x x 
+Case #50:
+x x x x x 
+x x x x x 
+Case #51:
+c 
+. 
+. 
+. 
+Case #52:
+c x 
+Case #53:
+Impossible
+Case #54:
+Impossible
+Case #55:
+Impossible
+Case #56:
+c 
+Case #57:
+c . . . 
+. . . . 
+. . . . 
+. . . . 
+Case #58:
+c 
+. 
+. 
+x 
+Case #59:
+x x x x 
+x x x x 
+x x x x 
+x x x x 
+x x x x 
+Case #60:
+c . x x 
+. . x x 
+. . x x 
+x x x x 
+Case #61:
+c . . 
+. . . 
+. . . 
+. x x 
+Case #62:
+Impossible
+Case #63:
+Impossible
+Case #64:
+c x x x 
+Case #65:
+c . . x 
+. . . x 
+. . . x 
+. . . x 
+x x x x 
+Case #66:
+c . x x x 
+Case #67:
+c . . . . 
+. . . . . 
+. . . . . 
+Case #68:
+x x x x x 
+x x x x x 
+x x x x x 
+x x x x x 
+x x x x x 
+Case #69:
+Impossible
+Case #70:
+c . 
+. . 
+. . 
+Case #71:
+x x x 
+x x x 
+Case #72:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . x x 
+Case #73:
+Impossible
+Case #74:
+c . x x 
+Case #75:
+c 
+. 
+x 
+Case #76:
+Impossible
+Case #77:
+c . x x x 
+. . x x x 
+. . x x x 
+. . x x x 
+x x x x x 
+Case #78:
+c . . 
+. . . 
+. . . 
+. . . 
+Case #79:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . x 
+Case #80:
+c . . x x 
+Case #81:
+c . . . 
+. . . . 
+. . . . 
+. . . x 
+Case #82:
+c . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+Case #83:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . . x 
+Case #84:
+Impossible
+Case #85:
+c . . x 
+. . . x 
+. . . x 
+Case #86:
+x x x x 
+x x x x 
+x x x x 
+Case #87:
+Impossible
+Case #88:
+Impossible
+Case #89:
+c . . . . 
+. . . . . 
+Case #90:
+c . . . . 
+. . . . . 
+. . . . . 
+. . x x x 
+Case #91:
+c . . . 
+. . . . 
+Case #92:
+x x x 
+x x x 
+x x x 
+x x x 
+Case #93:
+c . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+x x x x x 
+Case #94:
+Impossible
+Case #95:
+Impossible
+Case #96:
+c 
+. 
+. 
+x 
+Case #97:
+c . 
+. . 
+. . 
+. . 
+Case #98:
+c . . . . 
+. . . . . 
+. . . x x 
+Case #99:
+Impossible
+Case #100:
+Impossible
+Case #101:
+Impossible
+Case #102:
+c . . . x 
+Case #103:
+Impossible
+Case #104:
+Impossible
+Case #105:
+Impossible
+Case #106:
+c . . 
+. . . 
+Case #107:
+Impossible
+Case #108:
+Impossible
+Case #109:
+c 
+x 
+Case #110:
+Impossible
+Case #111:
+Impossible
+Case #112:
+Impossible
+Case #113:
+Impossible
+Case #114:
+Impossible
+Case #115:
+c x x x x 
+Case #116:
+Impossible
+Case #117:
+c . . . x 
+. . . . x 
+Case #118:
+Impossible
+Case #119:
+c . . x 
+. . . x 
+. . . x 
+x x x x 
+x x x x 
+Case #120:
+c . . 
+. . . 
+. . . 
+. . x 
+Case #121:
+c . x x x 
+. . x x x 
+. . x x x 
+. . x x x 
+Case #122:
+c . x 
+. . x 
+. . x 
+x x x 
+x x x 
+Case #123:
+Impossible
+Case #124:
+Impossible
+Case #125:
+c . 
+. . 
+. . 
+. . 
+x x 
+Case #126:
+c . . . x 
+. . . . x 
+x x x x x 
+Case #127:
+x x 
+x x 
+Case #128:
+c . . x 
+. . . x 
+. . . x 
+x x x x 
+Case #129:
+x x x x x 
+x x x x x 
+x x x x x 
+x x x x x 
+Case #130:
+c . x x 
+. . x x 
+. . x x 
+Case #131:
+c . . 
+. . . 
+. . . 
+x x x 
+x x x 
+Case #132:
+x x x x x 
+x x x x x 
+x x x x x 
+Case #133:
+c . . 
+. . . 
+. . . 
+. . . 
+. . x 
+Case #134:
+Impossible
+Case #135:
+Impossible
+Case #136:
+c . . 
+. . . 
+. . x 
+Case #137:
+c . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+Case #138:
+c . . . 
+Case #139:
+Impossible
+Case #140:
+Impossible
+Case #141:
+c . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+x x x x x 
+Case #142:
+Impossible
+Case #143:
+c . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+Case #144:
+c . . . . 
+. . . . . 
+. . x x x 
+Case #145:
+c 
+. 
+x 
+Case #146:
+c . . 
+. . . 
+. . . 
+x x x 
+x x x 
+Case #147:
+c . . 
+. . . 
+. . . 
+Case #148:
+Impossible
+Case #149:
+c . x 
+. . x 
+. . x 
+Case #150:
+c . . . . 
+Case #151:
+Impossible
+Case #152:
+c 
+. 
+. 
+. 
+x 
+Case #153:
+c . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+Case #154:
+c . . x x 
+. . . x x 
+. . . x x 
+Case #155:
+c 
+. 
+. 
+. 
+x 
+Case #156:
+c . . x x 
+. . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+Case #157:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+Case #158:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . x x x 
+Case #159:
+c 
+. 
+. 
+. 
+x 
+Case #160:
+c . . x 
+. . . x 
+. . . x 
+x x x x 
+Case #161:
+Impossible
+Case #162:
+c . . x x 
+. . . x x 
+Case #163:
+c . x 
+. . x 
+. . x 
+. . x 
+Case #164:
+c . . . 
+. . . . 
+. . . x 
+Case #165:
+c . . x 
+. . . x 
+. . . x 
+. . . x 
+x x x x 
+Case #166:
+c . . x 
+. . . x 
+. . . x 
+. . . x 
+. . . x 
+Case #167:
+c . x x x 
+. . x x x 
+. . x x x 
+. . x x x 
+. . x x x 
+Case #168:
+c . . x x 
+. . . x x 
+x x x x x 
+Case #169:
+Impossible
+Case #170:
+c . . . x 
+. . . . x 
+. . . . x 
+x x x x x 
+Case #171:
+Impossible
+Case #172:
+c . x 
+. . x 
+. . x 
+x x x 
+Case #173:
+c . x x 
+. . x x 
+. . x x 
+. . x x 
+Case #174:
+c . x x 
+. . x x 
+. . x x 
+. . x x 
+x x x x 
+Case #175:
+c . . . 
+. . . . 
+. . . . 
+. . . . 
+. . . . 
+Case #176:
+Impossible
+Case #177:
+x x x 
+x x x 
+x x x 
+x x x 
+x x x 
+Case #178:
+c . 
+. . 
+. . 
+x x 
+Case #179:
+c . . 
+. . . 
+. . . 
+. . . 
+. . . 
+Case #180:
+c . . . 
+. . . . 
+. . . . 
+. . x x 
+Case #181:
+Impossible
+Case #182:
+Impossible
+Case #183:
+c x x 
+Case #184:
+Impossible
+Case #185:
+Impossible
+Case #186:
+c . . . x 
+. . . . x 
+x x x x x 
+Case #187:
+c . . . 
+. . . . 
+. . . . 
+. . . . 
+x x x x 
+Case #188:
+c 
+. 
+. 
+x 
+Case #189:
+Impossible
+Case #190:
+Impossible
+Case #191:
+Impossible
+Case #192:
+Impossible
+Case #193:
+c . . x 
+. . . x 
+. . . x 
+x x x x 
+x x x x 
+Case #194:
+Impossible
+Case #195:
+Impossible
+Case #196:
+c . x x x 
+. . x x x 
+. . x x x 
+x x x x x 
+x x x x x 
+Case #197:
+c . . x x 
+. . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+Case #198:
+c . . . . 
+. . . . . 
+. . . . x 
+Case #199:
+c . . 
+. . . 
+. . . 
+. . . 
+. x x 
+Case #200:
+Impossible
+Case #201:
+c . . x 
+. . . x 
+Case #202:
+Impossible
+Case #203:
+Impossible
+Case #204:
+Impossible
+Case #205:
+c 
+. 
+Case #206:
+Impossible
+Case #207:
+Impossible
+Case #208:
+c . 
+. . 
+. . 
+x x 
+x x 
+Case #209:
+c . . 
+Case #210:
+Impossible
+Case #211:
+x x 
+x x 
+x x 
+Case #212:
+Impossible
+Case #213:
+Impossible
+Case #214:
+c . . x x 
+. . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+Case #215:
+c . . . x 
+. . . . x 
+. . . . x 
+x x x x x 
+Case #216:
+c . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+Case #217:
+Impossible
+Case #218:
+c . . 
+. . . 
+. . . 
+x x x 
+Case #219:
+c . . . 
+. . . . 
+. . . . 
+. . . . 
+. x x x 
+Case #220:
+c . . . x 
+. . . . x 
+. . . . x 
+. . . . x 
+x x x x x 
+Case #221:
+Impossible
+Case #222:
+Impossible
+Case #223:
+Impossible
+Case #224:
+c . . x x 
+. . . x x 
+. . . x x 
+x x x x x 
+Case #225:
+c . . . . 
+. . . . . 
+x x x x x 
+x x x x x 
