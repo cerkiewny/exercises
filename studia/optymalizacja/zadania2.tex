@@ -1,0 +1,443 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\DeclareUnicodeCharacter{00A0}{ }
+\DeclareUnicodeCharacter{00A0}{~}
+\usepackage{lmodern}
+\selectlanguage{polish}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{enumerate}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{enumitem}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\usepackage{listings}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Metody Optymalizacji zestaw zadań 2\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+\section{Zadanie 2.1}
+
+Tabela przedstawiająca wartości pomiarów:
+\newline  
+\newline  
+{
+  \begin{tabular}{|c|c|c|}
+    \hline
+    numer pomiaru &  x & y \\
+    \hline
+    1 & -3 & 1 \\
+    \hline
+    2 & 1 & 3 \\
+    \hline
+    3 & 2 & 5 \\
+    \hline
+
+  \end{tabular}
+}
+\newline  
+\newline  
+Celem zadania jest znalezienie najlepszego dopasowania prostej do pomiarów.
+Metodą wskazaną jest użycie metody najmniejszych kwadratów
+
+\[y=\alpha x + \beta\]
+
+Z wzorów w metodzie najmniejszych kwadratów możemy wyliczyć odpowiednio:
+\[\alpha = \frac{SS_{xy}-S_x*S_y}{\delta}\]
+Oraz:
+\[\beta = \frac{S_{xx}S_y-S_xS_{xy}}{\delta}\]
+Gdzie:
+\[\delta=S*S_{xx}-S_x^2\]
+\[S=n\]
+\[S_x=\sum\limits_{i=1}^nx_i=0\]
+\[S_y=\sum\limits_{i=1}^ny_i9\]
+\[S_{xx}=\sum\limits_{i=1}^nx^2_i=14\]
+\[S_{xy}=\sum\limits_{i=1}^nx_iy_i=10\]
+\[S_{yy}=\sum\limits_{i=1}^ny^2_i=35\]
+
+
+Podkładając te wartości do wzorów otrzymujemy odpowiednio:
+
+\[\alpha = 0.71\]
+\[\beta = 3\]
+
+Wykres minimalizowanej funkcji to:
+Oś pozioma przedstawia wartość \[\alpha\] natomiast pionowa wartość \[\beta\].
+\begin{tikzpicture}
+  \begin{axis}[
+  title={$Funkcja minimalizowana$},
+  domain=0:4,
+  view={0}{90},
+  ]
+  \addplot3[contour gnuplot={number=24},thick]
+  {(1-(-3*x+y))^2+(3-(x+y))^2+(5-(2*x+y))^2};
+  \end{axis}
+\end{tikzpicture}
+
+Wzór na funkcję minimalizowaną:
+
+\[(1-(-3*x+y))^2+(3-(x+y))^2+(5-(2*x+y))^2\]
+
+\newpage
+\section{Zadanie 2.2}
+
+Funkcja badana:
+
+\[f(x,y)=20x+26y+4xy-4x^2-3^y2\]
+
+Poszukujemy maksimum tej funkcji, albo minimum funkcji danej wzorem:
+
+\[f'(x,y)=-20x-26y-4xy+4x^2+3^y2\]
+
+Ograniczenia to x,y > 0.
+
+Badając pochodne cząstkowe funkcji:
+
+\[\frac{\partial f'}{\partial x}=-20-4y+8x\]
+\[\frac{\partial f'}{\partial y}=-26-4x+6y\]
+
+Otrzymujemy potencjalny punkt na minimum: \[(\frac{56}{9},\frac{67}{9})\].
+
+Wartość funkcji w tym punkcie wynosi 182.1.
+
+Pozostaje udowodnienie że funkcja ta jest wklęsła.
+
+W tym celu sprawdzimy wartość pochodnej:
+\[\frac{\partial f'^2}{\partial x^2}=8\]
+
+Oraz
+\[\frac{\partial f'^2}{\partial y^2}=6\]
+
+Ponieważ są one obie niezależne od współrzędnych x lub y, funkcja musi być wklęsła zarówno w osi x jak i y (jej rzut na obie płaszczyzny jest parabolą). 
+
+\newpage
+\section{Zadanie 2.3}
+
+Pisząc prosty algorytm przeszukiwania siły brutalnej:
+
+\begin{lstlisting}
+def main():
+   i = 0
+   j = 0
+
+   maxj = 0
+   maxim = 0
+   while(i * 4000 < 200000):
+        j = 0
+        while((i * 4000 + j * 5000) < 200000):
+            if((12*i*j - i*i -3*j*j) > maxim):
+                maxim = (12*i*j - i*i -3*j*j)
+                maxi = i
+                maxj = j
+            j = j + 1
+        i= i + 1
+    print ( maxim )
+    print ( maxi )
+    print ( maxj )
+\end{lstlisting}
+
+Otrzymujemy wartość S równą : 4169, dla ilości reklam w gazecie 26 oraz 19 minutach reklam w telewizji.
+\newpage
+\section{Zadanie 2.5}
+
+Funkcja badana:
+
+\[f(x)=\mathopen|x\mathclose|+ x^4\]
+
+Aby zbadać wypukłość tej funkcji należy podstawić jej wartości do zbioru:
+
+\[(\forall \alpha 0<\alpha<1) (\forall x^0, x^1 \in X) f(\alpha x^0+(1-\alpha)x^1)\leq\alpha f(x^0)+(1-\alpha)f(x^1)\]
+
+Podstawiając funkcję:
+
+\[\mathopen|\alpha x^0 + (1 - \alpha)x^1\mathclose|+ (\alpha x^0+(1-\alpha)x^1)^4 \leq\alpha \mathopen|x^0\mathclose|+ (x^0)^4+(1-\alpha)\mathopen|x^1\mathclose|+ (x^1)^4\]
+
+Wiemy że:
+
+\[\mathopen|\alpha x^0 + (1 - \alpha)x^1\mathclose| \leq (1-\alpha)\mathopen|x^1\mathclose| + \alpha\mathopen|x^0\mathclose|\]
+
+Zostaje do wykazania:
+
+\[(\alpha x^0+(1-\alpha)x^1)^4 \leq(x^0)^4+ (x^1)^4\]
+
+Co łatwo można sprowadzić do postaci:
+
+\[(\alpha x^1+(1-\alpha)x^1)^4 \leq(x^0)^4+ (x^1)^4\]
+
+Zakładając że wartość bezwględna \[x^1\] jest większa od \[x^0\].
+W tym wypadku jeden z członów skróci się pozostawiając trywialną nierówność.
+
+W drugim przypadku posłużymy się twierdzeniem iż suma funkcji wypukłych jest funkcją wypukłą.
+Obliczając drugą pochodną funkcji \[exp\] wiemy że jest ona wypukła (2 pochodna zawsze większa od 0).
+To samo możemy powiedzieć o funkcji \[exp(-\frac{1}{2}x)\]) jest ona bowiem przeskalowana oraz obrócona względem osi Y.
+
+Funkcja \[x^4\] jest także funkcją wypukła (jej druga pochodna to \[12x^2\] która jest zawsze większa od zera.
+A zatem ich suma również musi być funkcją wypukłą.
+\newpage
+\section{Zadanie 2.6}
+
+Dana jest funkcja:
+
+\[x\in\mathbb{R}^2f(x)=(x_1)^2+x_1x_2+3(x_2)^2\]
+
+Jej gradient to:
+
+\[\Delta f(x)=[\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2}]=[2x_1+x_2,6x_2+x_1]\]
+
+Pochodna w kierunku d=(1,1):
+
+\[\Delta f(x) * d = 3x_1 + 7x_2\]
+
+Pochodna w kierunku p=(-1,1):
+
+\[\Delta f(x) * d = -x_1 + 5x_2\]
+
+Macierz Hessego:
+\[
+\begin{bmatrix}
+  \frac{\partial f}{\partial x_1^2} & \frac{\partial f}{\partial x_2x_2} \\
+  \frac{\partial f}{\partial x_1x_2} & \frac{\partial f}{\partial x_2^2} 
+ \end{bmatrix}
+=
+\begin{bmatrix}
+  2 & 1 \\
+  1 & 6 
+ \end{bmatrix}
+ \]
+\newpage
+\section{Zadanie 2.7}
+
+Dana jest macierz funkcji kwadratowej:
+
+\[
+\begin{bmatrix}
+  3 & 1 \\
+  2 & 4 
+\end{bmatrix}
+\]
+
+Pierwszym krokiem stwierdzenia czy funkcja jest wypukła jest wyliczenie równania charakterystycznego:
+
+\[
+det \begin{bmatrix}
+  s - 3 & -1 \\
+  -2 & s - 4 
+\end{bmatrix}
+= s^2 - 7s + 10 
+\]
+
+Rozwiązania to:
+\[s_1=2\]
+\[s_2=5\]
+
+Jest to zatem macierz dodatnio określona, funkcja jest wypukła.
+Kroki te powtarzamy dla pozostałych macierzy:
+
+\[
+det\begin{bmatrix}
+  s+3 & -1 \\
+  -2 & s+4 
+\end{bmatrix}
+= s^2 + 7s +10
+\]
+
+Rozwiązania to:
+\[s_1=-2\]
+\[s_2=-5\]
+Jest to zatem macierz ujemnie określona, nie jest zatem wypukła.
+
+
+\[
+det\begin{bmatrix}
+  s-6 & -2 \\
+  -1 & s+2 
+\end{bmatrix} = s^2 -4s - 14
+\]
+
+Rozwiązania to:
+\[s_1=2+3\sqrt{2}\]
+\[s_2=2-3\sqrt{2}\]
+
+Jest to zatem macierz ujemnie nieokreślona, nie jest zatem wypukła.
+
+\[
+det\begin{bmatrix}
+  s-3 & 2 \\
+  0 & s-2 
+\end{bmatrix}
+= s^2 -5s
+\]
+Rozwiązania to:
+\[s_1=0\]
+\[s_2=5\]
+Macierz ta jest zatem dodatnio półokreślona, funkcja jest wypukła
+\newpage
+\section{Zadanie 2.8}
+
+Funkcja dana jest wzorem:
+\[f(x)=0.25x^4-x^3+x^2+1\]
+
+Wyliczam pierwszą oraz drugą jej pochodną:
+
+\[f'(x)=x^3-3x^2+2x\]
+
+\[f''(x)=3x^2-6x+2\]
+
+Pierwsza pochodna zeruje się w punkcie 0 (x można wyciągnąć przed wszystkie składniki)
+
+
+\[f'(x)=x*(x^2-3x+2)\]
+
+Zgadując dalej pierwiastki, wielomian w nawiasie ma pierwiastek w punkcie 1.
+
+
+\[f'(x)=x*(x-1)(x-2)\]
+
+Ostatni pierwiastek musi zatem istnieć w punkcie 2.
+
+Licząc wartość drugiej pochodnej w tych punktach:
+
+\[f''(0)=2\]
+\[f''(1)=3-6+2=-1\]
+\[f''(2)=3*4-6*2+2=12-12+2\]
+
+Zatem funkcja posiada 2 minima lokalne w punkcie 0 oraz 2. Co zresztą można zobaczyć na wizualizacji funkcji: \\
+
+\begin{tikzpicture}
+  \begin{axis}[
+    title={$Wizualizacja funkcji$},
+  ]
+  % use TeX as calculator:
+  \addplot[domain=-1:3] {0.25*x^4-x^3+x^2+1};
+  \end{axis}
+\end{tikzpicture}
+
+\newpage
+
+
+\section{Zadanie 2.9}
+
+
+Funkcja dana jest wzorem:
+\[f(x)=4x^3-18x^2+27x-7\]
+
+Wyliczam pierwszą oraz drugą jej pochodną:
+
+\[f'(x)=12x^2-36x+27\]
+
+\[f''(x)=24x-36\]
+
+Jedynym, podwójnym pierwiastkiem równania kwadratowego jest punkt \[ \frac{3}{2}\].
+
+Oznacza to że funkcja, będąc funkcją trzeciego stopnia nie posiada minimum lokalnego a jedynie punkt przegięcia.
+
+Można to potwierdzić również sprawdzając rysunek w okolicy punktu 3/2.
+
+\begin{tikzpicture}
+  \begin{axis}[
+    title={$Wizualizacja funkcji$},
+  ]
+  % use TeX as calculator:
+  \addplot[domain=1:2] {4*x^3-18*x^2+27*x-7};
+  \end{axis}
+\end{tikzpicture}
+
+\newpage
+
+
+
+\section{Zadanie 2.10}
+
+Znaleść aproksymacje funkcji:
+
+\[f(x_1,x_2) = (x_1-1)^2exp(x_2)+x_1\]
+
+w punkcie (0,0) oraz (1,1)
+
+Zaczniemy od policzenia pierwszej oraz drugiej pochodnej funkcji (zakładam aproksymacje kwadratową).
+
+\[\frac{\partial f'}{\partial x_1} = 2(x_1-1)exp(x_2)\]
+\[\frac{\partial f'}{\partial x_2} = (x_1-1)^2exp(x_2)\]
+\[\frac{\partial f''}{\partial x_1^2} = 2exp(x_2)\]
+\[\frac{\partial f''}{\partial x_1x_2} = (x_1-1)exp(x_2)\]
+\[\frac{\partial f''}{\partial x_2^2} = (x_1-1)^2exp(x_2)\]
+Zaczniemy od punktu (0,0)
+
+\[f(0,0) = (0-1)^2*exp(0)+0=1\]
+Znając wartość w punkcjie możemy przejść do obliczenia pochodnej w tym punkcie.
+\[\frac{\partial f'}{\partial x_1} = 2(0-1)exp(0)=-2\]
+\[\frac{\partial f'}{\partial x_2} = (0-1)^2exp(0)=1\]
+\[\frac{\partial f''}{\partial x_1^2} = 2exp(0)=2\]
+\[\frac{\partial f''}{\partial x_1x_2} = (0-1)exp(0)=-1\]
+\[\frac{\partial f''}{\partial x_2^2} = (0-1)^2exp(0)=1\]
+
+Następnie stosując szereg tailora możemy przybliżyc funkcje jako:
+
+\[f(\Delta x_1,\Delta x_2)=1-2\Delta x_1+\Delta x_2+\Delta x_1^2-\Delta x_1\Delta x_2+\frac{1}{2}\Delta x_2^2\]
+
+
+
+w punkcie (1,1) natomiast:
+
+\[f(1,1) = (1 - 1)^2*exp(1)+1 = 1\]
+Znając wartość w punkcjie możemy przejść do obliczenia pochodnej w tym punkcie.
+\[\frac{\partial f'}{\partial x_1} = 2(1-1)exp(1)=0\]
+\[\frac{\partial f'}{\partial x_2} = (1-1)^2exp(1)=0\]
+\[\frac{\partial f''}{\partial x_1^2} = 2exp(1)=0\]
+\[\frac{\partial f''}{\partial x_1x_2} = (1-1)exp(1)=0\]
+\[\frac{\partial f''}{\partial x_2^2} = (1-1)^2exp(1)=0\]
+
+Następnie stosując szereg tailora możemy przybliżyc funkcje jako:
+
+\[f(\Delta x_1,\Delta x_2)=1\]
+
+\begin{tikzpicture}
+  \begin{axis}
+    \addplot3[surf,domain=0:2] {(x-1)^2*exp(y)+x};
+  \end{axis}
+\end{tikzpicture}
+
+\end{document}
