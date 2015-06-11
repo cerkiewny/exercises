@@ -1,0 +1,305 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Techniki Internetu w biznesie internetowym\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Zadanie 1.1}
+
+\subsection {Pytanie}
+
+Co to jest e-commerce i czym różni się od e-biznesu?
+
+\subsection  {Odpowiedź}
+
+E-commerce jest to termin określający handel internetowy.
+Za handel internetwy uznawany jest hażdy biznes prowadzony w oparciu o
+wspomaganie sprzedaży, dystrybucji lub kustomizacji produktu przez internet.
+
+Pojęcie e-biznesu jest zasadniczo pojęciem szerszym, określa ono jakąkolwiek działalność
+zyskową prowadzoną w oparciu lub przy pomocy internetu. E-commerce jest zatem podzbiorem
+e-biznesu w którym celem działalności jest handel produktem.
+
+\section{Zadanie 1.2}
+
+\subsection {Pytanie}
+
+Przedstaw własną listę wad i zalet e-biznesu.
+
+\subsection {Odpowiedź}
+
+Za największe zalety e-biznesu uważam:
+
+\begin{description}
+  \item[Łatwość dostępu] Klienci mogą bardzo łatwo dotrzeć do producenta.  
+  \item[Globalizacja] Dotarcie do klientów z całego świata.
+  \item[Dotarcie do nisz] Dzięki prowadzeniu internetowej działalności dotrzeć można do bardzo wąskich nisz które nie byłyby dostateczne do utrzymania lokalnych biznesów.
+  \item[Nowe rynki] Rynki takie jak handel grami internetowymi, aukcje internetowe, analiza big data zostały utworzone dzięki rozwojowi internetu.
+  \item[Łatwość reklamy] Dzięki popularności serwisów informacyjnych, wyszukiwarek, blogów specjalistycznych łatwo jest dotrzeć do klienta.
+  \item[Rzetelność] Negatywna opinia biznesu bardzo szybko dociera do klientów co pozwala na zaufanie do sklepów.
+\end{description}
+
+Za największe wady e-biznesu uważam:
+
+\begin{description}
+  \item[Brak bezpośredniości] Ciężko jest dotrzeć do klienta bezpośrednio, klient zawsze ma wrażenie że rozmawia z anonimową instytucją.
+  \item[Brak dostępu do produktu] Klient kupuje produkt bez uprzedniej wiedzy o jego dokładnym wyglądzie co może prowadzić do rozczarowań (w przypadku e-commarce).
+  \item[Agresywny marketing] Łatwość prowadzenia zautomatyzowanego marketingu który może denerwować klientów.
+  \item[Aspekty bezpieczeństwa] Internetowa przestępczość jest dużo łatwiejsza niż fizyczna, zaatakowanie jednogo serwisu może spowodować ujawnienie danych wielu klientów, zbiorowa odpowiedzialność
+    firm.
+  \item[Słaba legislacja] Przepisy prawne nie są dostosowane do działalności internetowych, ciężko jest wymyślić uniwersalne przepisy które nie krzywdziłyby częsci biznesów.
+  \item[Rzetelność] Mimo że jest zaletą fakt iż długo działające firmy mają wypracowaną opinie klientów, nowo powstałe biznesy mogą być wyłudzeniami w które łatwo wpaść.
+\end{description}
+
+
+\section{Zadanie 1.3}
+
+\subsection {Pytanie}
+
+Z jakich elementów składa się system e-biznesu?
+
+\subsection  {Odpowiedź}
+
+Elementy e-biznesu to:
+
+\begin {itemize}
+  \item Handel elektroniczny
+  \item analityka biznesowa
+  \item zarządzanie relacjami z klientem
+  \item zarządzanie łańcuchem dostaw
+  \item planowanie zasobów przedsiębiorstwa
+\end {itemize}
+
+\subsubsection {Handel elektroniczny} 
+
+Działalność oparta na sprzedaży produktu poprzez internet.
+
+\subsubsection {Analityka biznesowa}
+
+Działalność oparta na zbieraniu. zarządzaniu oraz preszukiwaniu informacjami w celu wspomagania decyzji biznesowych.
+
+\subsubsection {Zarządzanie relacjami z klientem}
+
+Działalonść polegająca na budowaniu trwałej relacji z klientem. Próba utworzenia trwałej więzi z klientem polegającej na zrozumieniu jego potrzeb oraz wspomaganie klientów (lub przyszłych
+klientów w rozwiązywaniu ich.
+
+\subsubsection {Zarządzanie łańcuchem dostaw}
+
+Realizacja szybkich elementów obsugi procesu wykonania produktu w celu szybkiej reakcji na zmianę rynku, minimalizacje kosztów produkcji i innych aspektów związanych z ulepszeniem procesu produkcji.
+
+\subsubsection {Planowanie zasobów przedsiębiorstwa}
+
+Część odpowiedzialna za automatyzacje zarządzani zasobami przedsiębiorstwa, takimi jak finansowe oraz materialne.
+
+\section{Zadanie 1.4}
+
+\subsection {Pytanie}
+
+Jakie znasz podstawowe cechy przedsięwzięć e-biznesowych w zakresie relacji z klientem?
+
+\subsection  {Odpowiedź}
+\begin {itemize}
+   \item wirtualizacja produktu,
+   \item indywidualizacja kompozycji wartości,
+   \item usieciowienie,
+   \item marketing doświadczeń,
+   \item wykorzystanie cyklu życia klienta.
+\end {itemize}
+
+\subsubsection {Wirtualizacja produktu}
+
+Wirtualizacja produktu polega na przeniesienie go do strefy cyfrowej. Czasami nie jest możliwe całkowite przeniesienie produktu do cyberprzestrzeni dlatego innym podejściem wirtualizacji produktu
+jest wzbogacenie go o informacje, dobrym przykładem może być odzież sportowa, która wzbogacona jest uwcześnie o serwisy nadzorujące oraz podsumowujące treningi.
+
+\subsubsection {indywidualizacja kompozycji wartości} 
+
+Indywidualizacja kompozycji polega na dostosowaniu produktu dokładnie do potrzeb klienta. Dobrym przykładem może być firma apple oferująca dowolnie wygrawerowany wzór na produkcie iPad,
+w przypadku klienta kupującego urządzenie jako prezent dla konkretnej osoby jest to indywidualizacja kompozycji - może w skrajnym przypadku nie istnieć drugi taki sam produkt.
+
+\subsubsection {usieciowienie}
+
+Usieciowienie polega na odniesieniu wartości produktu poprzez interakcję z innymi jego posiadaczami.
+Najlepszym przykładem są gry online które utworzyły osobny rynek konsumencki.
+
+\subsubsection {Marketing doświadczeń}
+
+Marketing doświadczeń polega na dostarczeniu doświadczeń stymulujących pozytywne emocje u klienta. Jest to metoda prowadzenia działalności konkurencyjnej do innych firm nie tylko poartej na jakość 
+dostarczanego produktu. 
+
+\section{Zadanie 1.5}
+
+\subsection {Pytanie}
+
+W jaki sposób Twoim zdaniem Internet może stymulować przedsiębiorczość?
+
+\subsection  {Odpowiedź}
+
+Internet pomaga zwiększyć opłacalność niektórych działalnościm które z powodu małego procentowo zainteresowania nie byłyby opłacalne, jednakża możliwość dotarcia globalnego do klientów pozwala im
+na rozwój. Kolejnym przykładem pozytywnej stymulacji przedsiębiorczości jest zwiększenie informacji oraz konkurencyjności usługodawców. Równy dostęp do informacji pozwala na wybranie dostosowanych
+do potrzeb działalności dostawców usług. Innym aspektem stymulacji jest zmniejszenie kosztów potrzebnych na administrację firmą oraz klientami.
+Dodatkowym aspektem jest otwrcie nowych rynków konsumenckich opartych o analize danych itd.
+Ostatnim aspektem jest wspomniany w wykładzie propaganda konkurencyjności która przenika do każdej gałęzi przemysłu oraz dostępność informacji które wpływają na powstawanie nowych pomysłow na 
+działalność
+
+\section{Zadanie 2.1}
+
+\subsection {Pytanie}
+
+Który z modeli biznesu internetowego wg Twojej opinii, powinien być wiodący dla polskich MŚP i dlaczego?
+
+\subsection  {Odpowiedź}
+
+Moim zdaniem, w Polsce, jako kraju rozwijającym się najważniejszymi modelami działalności internetowej są:
+
+\begin{itemize}
+  \item Kreatorzy rynku
+  \item Sklepy i przetargi elektroniczne
+  \item Handel elektroniczny B2C
+\end{itemize}
+
+Z tych wymienionych, biorąc pod uwagę fakt iż Polska jest krajem o dużym rozwarstwieniu społecznym najwżniejszym modelem wg mnie
+powinna byc kreacja nowych rynków. Daje to możliwość zaistnienia nie tylko w kraju ale także na świecie. Działalności oparte o sprzedaż internetową
+są siłą rzeczy oparte o firmy zgraniczne produkujące różne przedmioty, nie daje to zatem pełnej możliwości rozwoju dla kraju.
+
+\section{Zadanie 2.2}
+
+\subsection {Pytanie}
+
+Zakładając, że Twoja firma produkuje bombki choinkowe i zamierza je eksportować, który z modeli biznesowych byś wykorzystał?
+
+\subsection  {Odpowiedź}
+
+Biorąc pod uwagę taką działalność skupiłbym się na modelu biznesowym handel elektroniczny B2B. Ewentualnie handel elektroniczny B2C.
+Dużą zaletą handlu B2B jest zmniejszony koszt dystrybucji produktu - po znalezieniu lokalnych biznesów nie trzeba przesyłać produktu
+do indywidualnych klientów. Pomijając fakt iż łatwo zawrzeć wtedy umowę z firmami transportowymi, handel B2B zapewnia dużo większą
+ciągłość rynku, optymalizuje koszty, ułatawia zarządzanie firmą.
+
+\section{Zadanie 2.3}
+
+\subsection {Pytanie}
+
+Jakie główne grupy czynników wpływają na przychody gospodarki internetowej?
+
+\subsection  {Odpowiedź}
+
+Główne grupy czynników wpływające na przychody gospodarki internetowej to czynniki zewnętrzne oraz wewnętrzne.
+
+Do grupy czynników zewnętrznych zaliczamy:
+
+\begin {itemize}
+  \item Liczbę użytkowników
+  \item Poziom konwersji użytkownika
+  \item Średni przychód jednostkowy
+\end {itemize}
+
+Do grupy czynników wewnętrznych zaś:
+
+\begin {itemize}
+  \item Wielkość rynku 
+  \item Konkurencję
+  \item Produkty i usługi substytucyjne
+  \item Szacowaną skłonność do zakupu przez grupę docelową 
+\end {itemize}
+
+\section{Zadanie 2.4}
+
+\subsection {Pytanie}
+
+Które czynniki Twoim zdaniem mają najważniejszy wpływ na funkcjonowanie firm internetowych w Polsce?
+
+\subsection  {Odpowiedź}
+
+Moim zdaniem czynnikami wpływającymi w największej mieże na funkcjonowanie firm internetowych jest niski średni przychód jednostkowy,
+oraz wielkość rynku. W związku z tym iż jesteśmy średniej wielkości krajem o niskim przychodzie jednostkowym (jako kraj rozwijający się),
+bardzo istotnym czynnikiem jest wybranie takiej grupy docelowej aby maksymalizować wielkość rynku. Dodatkowym czynnikiem jest fakt iż w Polsce
+społeczeństwo bardzo szybko starzeje się co wpływa także na liczbę użytkowników używających internetu w codziennym życiu.
+
+\section{Zadanie 2.5}
+
+\subsection {Pytanie}
+
+Które rozwiązania biznesowe w sieci są Twoim zdaniem najbardziej korzystne? Uzasadnij swoją odpowiedź.
+
+\subsection  {Odpowiedź}
+
+Moim zdaniem najbardziej korzystnym biznesem internetowym są elektroniczne centrum handlowe pozwalają one na bardzo łatwo skalowalny biznes.
+Gwarantują (powyżej pewnego progu) sukces na dużą skalę - oferują wszystkim trzem stroną benefity - klientom biznesu: poszczególne działalności są
+bardzo łatwo dostępne z poziomu centra handlowego, gwarantują też dużą konkurencje; firmą członkowskim: praktycznie darmowa reklama z tytułu przynależenia
+do danego centrum, zaufanie klienta; firmy "rodzica": zarobek zależny zwykle od obrotu (im popularniejsze staje się centrum tym bardziej wszyscy chcą z niego korzystać,
+zwiększa to możliwości przy negocjacji umów z firmami oraz prestiż. Dobrym przykładem jest firma Valve która z firmy robiącej gry stała się dostawcą najbardzej
+znanej platformy do zakupu gier: Steam. 
+
+Jedyną wadą tego rodzaju działalności jest to iż gdy się nie wiedzie prymu w danym sektorze bardzo ciężko przeskoczyć lidera.
+
+\end{document}
