@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{gensymb}
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Projekt z przedmiotu fizyczne podstawy transmisji i przechowywania informacji \\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\newpage
+\tableofcontents
+\newpage
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+
+\section{Treść Zadania}
+
+Wiedząc, że moc nadajnika wynosi \(P_N\), sprawność fotodiody wynosi \(X\), zaprojketuj jak najdłuższe łącze światłowodowe jednokanałowe
+(działające w trzecim oknie telekomunikacyjnym) o przepływności B (nie używając wzmacniaczy). Załóż że straty na spawach i połączeniach wynoszą odpowiednio
+\(A_s\) - 1 spaw i \(A_c\) - 1 złącze. Wybierz trzy różne odległości między spawami z przedziału [5;10] km. Omów wpływ odległości między spawami na zasięg łącza.
+Potrzebne parametry włókna światłowodowego znajdź na stronie producenta. Omów poszczególne etapy projektu i wpływ parametrów łącza na jego zasięg.
+
+\section{Teoria transmisji światłowodowej}
+
+\subsection{Wstęp}
+
+Transmisja światłowodowa jest to przesył informacji za pomocą wiązki elektromagnetycznej z zakresu fal widzialnych.
+Sygnał przesyłany jest przy użycia nosnika który utrzymuje w sobie falę przy wykorzystaniu całkowitego wewnętrznego odbicia.
+Nośnik taki nazywamy światłowodem.
+Aby możliwe było powstanie tego zjawiska swiatłowód musi zostać wykonany z przynajmniej dwóch ośrodków o róznej prędkości propagacji światła.
+
+\subsection{Zjawiska występujące w Światłowodzie}
+
+W światłowodzie zachodzi wiele zjawisk fizycznych, można je podzielić na zjawiska porządane i negatywnie wpływające na transmisję sygnału.
+
+\subsection{Całkowite wewnętrzne odbicie}
+
+Najważniejszym, porządanym zjawiskiem jest opisane we wstępnie zjawisko całkowitego wewnętrznego odbicia. Polega ono na odbiciu promienia świetlnego od
+krawędzi dwóch ośrodków bez możliwości przeniknięcia do drugiego ośrodka. Aby zjawisko to miało miejsce muszą zostać spełnione dwa warunki:
+\begin{itemize}
+  \item Ośrodek w którym światło się znajduje musi mieć większy współczynnik załamania niż ośrodek od którego odbija się światło.
+  \item Kąt padania musi być większy od pewnego kąta krytycznego.
+\end{itemize}
+
+Kąt krytyczny jest to taki kąt w którym wiązka odbijająca się w granicy dwóch ośrodków musiałaby po odbiciu przebiegać wzdłóż granicy ośrodków.
+Można zwizualizować to na następującym schemacie:
+
+Z prawa załamania można obliczyć zatem kąt odbicia.\[n_1sin\Theta_1=n_2sin\Theta_2\] 
+Podkładając \[\Theta_{gran}=90\degree\] 
+Otrzymujemy: \[n_1sin\Theta_C=n_2sin\Theta_{gran}\]
+Po przekształceniu możemy wyliczyć kąt graniczny z wzoru \[\Theta_C=arcsin\frac{n_2}{n_1}\]
+
+Zjawisko to jest wykorzystywane w światłowodzie gdyż sprawia iż sygnał jest całkowicie "uwięziony" w wiązce, pod warunkiem że wpada do niego
+z odpowiednim kątem i pod warunkiem że światłowód nie jest mocno zgięty w żadnym fragmencie.
+
+\subsection{Tłumienie}
+
+W związku z tym iż nośnikiem informacji są fotony o określonej długości fali, na drodze światła dochodzi do jego rozproszenia przez jądra atomowe oraz absorpcji poprzez
+elektrony. Zjawisko to powoduje osłabienie sygnału w zależności od przebytej drogi w światłowodzie. 
+
+Intensywność absorpcji fotonów zależy od długości fali i jest ustalone przez rodzaj wykorzystanego źródła sygnału w światłowodzie. Następujący rysunek prezentuje
+zależność absorpcji (uwzględniający oba zjawiska) od długości fali. Na rysunku zostały naniesione linie (od lewej) intensywności rozproszen Rayleight'a oraz absorpcji podczerwieni.
+
+\subsection{Straty na złączach i spawach}
+
+Dodatkowymi czynnikami tłumienia są niedoskonałości wykonania światłowodu. Zjawiska takie występują miedzy innymi na złaczach końcowych oraz spawach pomiędzy
+fragmentami światłowodów, ma to związek z lokalnymi zaburzeniami geometrii które są dużo większe niż w innych miejscach światłowodu.
+
+\subsection{Dyspersja}
+
+Dodatkowym zjawiskiem występującym w światłowodzie jest dyspersja. Zjawisko to występuje z powodu różnicy dróg przebytej przez poszczególne fale.
+W związku z tym iż odbijają się one wielokrotnie od krawędzi światłowodu początkowo prostokątny sygnał intensywności w funkcji czasu zostaje rozmyty.
+Jego ostre krawędzie zostają rozmyte w czasie. Rysunek przedstawia zjawisko dyspersji, wykres intensywności sygnału w czasie w oddalających się od źródła
+fragmentach światłowodu.
+
+
+
+
+\end{document}
+
