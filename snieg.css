@@ -1,0 +1,26 @@
+@import url(http://fonts.googleapis.com/css?family=Lily+Script+One);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
+
+h1 {
+	font-family: 'Lily Script One', cursive;
+	font-size: 50 px;
+	margin: auto auto auto 30px;
+}
+
+p {
+	font-family: 'Patua One', cursive;
+	font-size: 25px;
+	margin: 0px auto;
+	}
+#sniezyca{
+	top = 0;
+	left = 0;
+	height = "100%";
+	width = "100%";
+	color = "white";
+	position = "fixed";
+}
+#sniezyca .platek {
+	color = "white";
+	position = "absolute";
+	}
