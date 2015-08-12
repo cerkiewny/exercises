@@ -1,12 +1,19 @@
 #main {
-    width: 50em;
-    height: 50em;
-    border-radius: 50%;
-    background-color: green;
-    border: 2px solid black;
-    margin: auto;
-	margin-top: 3em;
+	height:	500px;
+	width: 	500px;
+	margin: auto;
+	border-radius: 50%;
+	position: relative;
 }
+
+.part {
+	height:	500px;
+	width: 	500px;
+	margin: 0;
+	border-radius: 50%;
+	position: absolute;
+}
+
 .test {
 	font-size: 36px;
 	color : black;
