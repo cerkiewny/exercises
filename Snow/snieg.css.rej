@@ -1,0 +1,9 @@
+diff a/snieg.css b/snieg.css	(rejected hunks)
+@@ -20,7 +20,6 @@
+ 	color = "white";
+ 	position = "fixed";
+ }
+-#sniezyca .platek {
+ #sniezycaniebardzo .platek {
+ 	color = "white";
+ 	position = "absolute";
