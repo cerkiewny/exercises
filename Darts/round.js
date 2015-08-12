@@ -20,19 +20,29 @@ function round(get){
 	var test = document.createElement('div');
 	test.className = 'test';
 	document.getElementsByTagName('body')[0].appendChild(test);
-	
+
 		while (counter < parts) {
 			var part = document.createElement('div');
 			part.className = 'part';
 			random = getRandom(0,11);
 			getColor = color[random];
 			part.style.backgroundColor = getColor;
-			part.style.backgroundImage = "-webkit-linear-gradient (" + ((counter+1)*angle) + "deg, transparent:50%," + getColor + ":50%)",
-										"-webkit-linear-gradient (" + (counter*angle) + "deg," + getColor + ":50%, transparent: 50%)";
-
-			main.appendChild(part);
-			circle_parts.push(part);
+			var mother = document.createElement('div');
+			mother.className = "main";
+			mother.style.top = "-250px";
+			mother.style.left = "-250px";
+			mother.style.transform = "rotate("+counter*angle+"deg)";
+			mother.appendChild(part);
+			main.appendChild(mother);
+			circle_parts.push(mother);
 			counter ++;
+		}
+		for (counter = 1; counter < circle_parts.length; counter++) 	{
+			circle_parts[counter].style.transform = "rotate("+counter*angle+"deg)";
+			counter ++;
+			if (circle_parts[counter].style.transform = "rotate(360deg)"){
+				circle_parts[counter].style.transform = "rotate(0deg)";
+				}
 		}
 	test.innerHTML = random;
 }

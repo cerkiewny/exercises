@@ -1,19 +1,28 @@
-#main {
-	height:	500px;
-	width: 	500px;
-	margin: auto;
-	border-radius: 50%;
-	position: relative;
-}
-
 .part {
-	height:	500px;
-	width: 	500px;
-	margin: 0;
-	border-radius: 50%;
-	position: absolute;
+	content: "";
+	position:relative;
+    top: -50px;
+	left: -23px;
+	height: 250px;
+	width: 500px;
+	border-radius : 250px 250px 0 0;
+	border: 4px solid navy;
+	transform-origin: 50% 100%;
+	transform: rotate(170deg);
+	-webkit-transform: rotate(170deg);
 }
+.main {
+  height: 250px;
+  width: 500px;
+  overflow: hidden;
+  }
+#main {
+ height: 500px;
+  width: 500px;
+  margin: auto;
+border-radius: 50%;
 
+}
 .test {
 	font-size: 36px;
 	color : black;
