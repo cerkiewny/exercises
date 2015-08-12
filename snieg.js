@@ -1,21 +1,20 @@
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + 1 ;
 }
-	
-function geronimo (tablica, wheight, predkosci, wwidth) {	
+
+function geronimo (tablica, wheight, predkosci, wwidth, randomA, randomB) {	
 	for (var licznik=0, random_speed=getRandomInt(1,5); 
 	licznik < tablica.length; licznik++,
 	random_speed=getRandomInt(1,10)) {
 		var val1 = tablica[licznik].offsetTop;
+		var val2 = tablica[licznik].offsetLeft;
 		tablica[licznik].style.top = (val1 + predkosci[licznik]) + "px";
-		document.getElementById('test').innerHTML = licznik;
+		tablica[licznik].style.left = (val2 + randomA[licznik] *Math.sin(randomB[licznik] * val1));
 		if(val1 > wheight){
 			tablica[licznik].style.top = -10 + "px";
 			tablica[licznik].style.left = getRandomInt(-50, wwidth)+"px";
 			predkosci[licznik] = getRandomInt(1,10);
 		}
-
-
 	}
 }
 
@@ -26,6 +25,8 @@ function snieg() {
 	var wheight = innerHeight;
 	var tablica = [];
 	var predkosci = [];
+	var randomA = [];
+	var randomB = [];
 	var sniezyca = document.createElement('div');
 	sniezyca.id = "sniezyca";
 	sniezyca.style.top = 0;
@@ -49,7 +50,9 @@ function snieg() {
 		var newplatek = sniezyca.appendChild(platek);
 		tablica.push(newplatek);
 		predkosci.push(getRandomInt(1,10));
+		randomA.push(getRandomInt(100,200));
+		randomB.push(getRandomInt(1,2));
 		licznik ++;
 	}
-	var ojakspadaja = setInterval(function() { geronimo(tablica, wheight, predkosci, wwidth); }, 1);
+	var ojakspadaja = setInterval(function() { geronimo(tablica, wheight, predkosci, wwidth, randomA, randomB); }, 1);
 }
