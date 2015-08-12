@@ -1,0 +1,14 @@
+#main {
+    width: 50em;
+    height: 50em;
+    border-radius: 50%;
+    background-color: green;
+    border: 2px solid black;
+    margin: auto;
+	margin-top: 3em;
+}
+.test {
+	font-size: 36px;
+	color : black;
+	text-align: center;
+}
