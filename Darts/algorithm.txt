@@ -1,0 +1,26 @@
+1. counter = 0
+2. parts = 35
+3. colorArray
+4. create main div and write it to body
+5. function prepare_circle
+6. function rotate
+7. circleArray
+8. function getRandom
+
+
+function prepare_circle
+1 if (counter > parts)
+2 create a div
+3 getColor = colorArray[getRandom(0,11]
+4 set a position
+5 add div to main div
+6 push div to circleArray
+7 counter ++
+
+function rotate (for every element of circleArray)
+1 move div to new position
+2 if position > 360
+3. position = 0
+
+
+
