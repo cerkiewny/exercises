@@ -1,0 +1,18 @@
+#main {
+	height: 440px;
+	width: 440px;
+	background-color: lavender;
+	margin: auto;
+	position: relative;
+	z-index: 1;
+	padding: 5px;
+}
+.tile {
+	height: 100px;
+	width: 100px;
+	margin: 5px;
+	background-color: lightblue;
+	display: inline;
+	position: absolute;
+	z-index:3;
+}
