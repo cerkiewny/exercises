@@ -1,0 +1,605 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\renewcommand\thesection{}
+\renewcommand\thesubsection{}
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Techniki Internetu w biznesie internetowym\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Zadanie 3.1}
+
+\subsection {Pytanie}
+
+Wymień i krótko scharakteryzuj elementy procesu orgranizacji kampanii reklamowych on -line.
+
+\subsection {Odpowiedź}
+
+Etapami kampani reklamowych są:
+
+\begin {itemize}
+  \item planowanie
+  \item przygotowanie
+  \item realizacja
+  \item ocena skuteczności
+\end {itemize}
+
+Planowanie kampanii polega na wybraniu grupy docelowej, technologii narzędzi marketingowych oraz strategii.
+Dodatkowym bardzo ważnym czynnikiem jest ustalenie celów kampanii. W tym etapie przygotowuje się także budżet
+oraz kosztorys przedsięwzięcia.
+
+Przygotowanie kampanii polega na przygotowaniu docelowej formy, określeniu w jaki sposób będzie zrealizowana
+reklama, gdzie zostanie umieszczona w jaki sposób i w jakich serwisach będzie ona emitowana itd.
+
+Realizacja kampanii polega na wdrożeniu planu.
+
+Ocena skuteczności jest etapem podsumowującym mającym na celu wyciągnięcie wniosków na przyszłość.
+Podsumowane zostają dobre oraz złe cechy organizacji oraz przebiegu kampanii, dodatkowo oceniana jes zyskowność
+oraz długotrwały wpływ kampanii na wizerunek firmy.
+
+\section{Zadanie 3.2}
+
+\subsection {Pytanie}
+
+Którą z form internetowej reklamy graficznej uważasz za najlepszą. Odpowiedź uzasadnij.
+
+\subsection {Odpowiedź}
+
+Za najlepszą formę reklamy graficznej uważam formę skyscrapper, jest ona dość ładnie wkomponowana w wąskie zwykle
+strony internetowe, dodatkowo treść jej nie jest aż tak rażąca i łatwo na nią nie zwrócić uwagi, co za tym idzie
+jest najmniej inwazyjną formą prezentacji graficznej produktu w internecie, jako taka sprawia że dużo większe jest
+prawdopodobieństwo iż przy przeczytaniu jej ktoś na prawdę jest zainteresowany produktem - łatwo zobaczyć każdy baner
+na stronie, ale gdy są one zbyt widoczne i zakłócają treść, wzbudzają one tylko niechęć internauty.
+
+\section{Zadanie 3.3}
+
+\subsection {Pytanie}
+
+Czym różni się brand marekting od performance marketingu?
+
+\subsection {Odpowiedź}
+
+Brand marketing jest to forma marketingu oparta o budowę marki - głównym celem jest zbudowanie długotrwałego wizerunku
+firmy. Bardzo ważne jest dobre imię oraz zbudowanie takiej wizji firmy która najbardziej zachęci grupę docelową klientów.
+
+Performance marketing jest oparty na szybkie zwiększenie sprzedaży lub zyskowności firmy. Głównym celem perfomrance marketingu
+jest zatem rozszerzenie kręgu sprzedaży, rozbudowanie rynku, zachęcenie do kupowania produktu jego ceną lub innymi walorami.
+Nie ma w takiej formie miejsca na budowanie długotrwałych wartości związanych z firmą.
+
+\section{Zadanie 3.4}
+
+\subsection {Pytanie}
+
+Przedstaw własną listę wad i zalet e-marketingu?
+
+\subsection {Odpowiedź}
+
+Ogromną zaletą e-marketingu jest bardzo łatwe zwrócenie uwagi setek tysięcy a nawet milionów użytkowników swoim produktem.
+Jest to według mnie przekaz który ma największe szanse dotarcia do dużej ilości ludzi. 
+
+Kolejną zaletą jest możliwość kierowania marketingu jedynie do potencjalnie zainteresowanych klientów, możliwe jest profilowanie
+użytkowników na podstawie ich zachowań w sieci.
+
+Wadą jest bardzo duża agresywność reklam i złe mniemanie użytkników, każdy z nas był w sytuacji gdy ma swieżo otwartą stronę internetową
+gdy nagle wyskakuje mu reklama zabierająca cały ekran, lub w której obejrzenie 10 sekundowego filmiku poprzedzone jest 40 sekundami obowiązkowymi
+do obejrzenia reklamami.
+
+Drugą wadą jest nieetyczność zabiegów stosowanych przez niektóre firmy. Agresywny marketing który jest nietrafiony jest bardzo irytujący oraz
+może zniszczyć dobre imię firmy.
+
+\section{Zadanie 3.5}
+
+\subsection {Pytanie}
+
+Znajdź w sieci ankietę i prześledź jej budowę. Jakie są jej Elementy? Czu odpowiada
+ona budowei tradycyjnego kwestionariusza?
+
+\subsection {Odpowiedź}
+
+Ankieta którą analizuję znajduje się pod adresem: http://www.ankietka.pl/ankieta/7036/ankieta-dotyczaca-internetu.html.
+Jest to ankieta dotycząca użycia internetu. Składa się ona z trzech części, pierwszą z nich jest część wprowadzająca
+znajdują się w niej pytania dotyczące grupy wiekowej oraz społecznej, w pierwszej części zgrubnie klasyfikuję swoją przynależność
+poprzez odpowiedź na zgrubne pytania o wiek płeć wykształcenie. Jest to część która pozwala na wyciągnięcie wniosków, zasadniczo
+bez niej badanie które ma na celu określic charakter użytkownika sieci byłoby bez sensu.
+
+Druga część dotyczy podstawowych zagadnień związanych z tematem, pytania dotyczą tego w jakich ilościach i w jaki sposób korzystam
+z internetu, z jakich narzędzi korzystam. Część ta zarówno jak i poprzednia dotyczą faktów.
+
+Ostatnia część to określenie moich poglądów na pewne zagadnienia, pytania te dotyczą już nie faktów tyle co szczegółowej opinii.
+Moim zdaniem ankieta ta może pokazać wiele cennych informacji, między innymi jak opinie na przyszłość komunikacji postrzegana
+jest na przekroju różnych warstw społecznych, wieku oraz na tle różnej edukacji.
+
+\section{Zadanie 3.6}
+
+\subsection {Pytanie}
+
+Jakie są Twomim zdaniem zalety i wady reklamy tradycyjnej i reklamy internetowej?
+
+\subsection {Odpowiedź}
+
+Moim zdaniem zaletami reklamy internetowej jest dotarcie do bardzo szerokiego grona odbiorców za przystępną cenę.
+Kolejną zaletą jest możliwość targetowania reklam (o czym wspomniałem przy okazji e marketingu).
+Dodatkową zaletą jest jej różnorodność pod względem formy.
+Jej efektywność przy odpowiednim stosowaniu formy oraz dobranie strategii może być bardzo duża, może to być zaletą,
+jest to według mnie również i wadą, bardzo ciężko trafić w gusta odbiorców i możliwe jest wywołanie dużego zniechęcenia
+do firmy lub produktu.
+Dodatkową wadą jest duże zniechęcenie użytkowników do takiej formy. Wiąże się to z przesyceniem niektórych serwisów
+reklamami.
+
+\section{Zadanie 3.7}
+
+\subsection {Pytanie}
+
+Skonstruuj sondaż lub ankietę internetową na temat sposobu spędzania wolnego czasu przez
+studentów. Zaplanuj badanie. Jakie są argumenty za, a jakie przeciw przeprowadzaniu tych badań
+on-line.
+
+\subsection {Odpowiedź}
+
+Ankieta podzielona byłaby na następujące częsci:
+
+Pytania charakteryzujące osobę:
+\begin{enumerate}
+  \item Wiek
+  \item Rok studiów 
+  \item Uczelnia 
+  \item Kierunek studiów 
+  \item Płeć 
+  \item Czy poza studiamy masz pracę 
+\end{enumerate}
+
+Pytania dotyczące ogólnego wykorzystania czasu wolnego:
+\begin{enumerate}
+  \item Jak dużo czasu wolnego masz w tygodniu
+  \item Jak dużo czasu wolnego masz w weekendy
+  \item Jak często uprawiasz sport
+  \item Jak często wyjeżdżasz w celach rekreacyjnych na cały weekend
+  \item Jak często wykorzystujesz wolny czas na realizację hobby
+  \item W jaki dodatkowy czas spędzasz swój czas wolny (pytanie otwarte)
+\end{enumerate}
+
+Pytania dotyczące użytkowania komputera:
+\begin{enumerate}
+  \item Jak często używasz internetu
+  \item Jak dużo czasu spędzasz na graniu w gry
+  \item Jak dużo czasu spędzasz na portalach społecznych
+  \item Jak dużo czasu spędzasz na graniu online
+\end{enumerate}
+
+Pytania dotyczące otoczenia:
+\begin{enumerate}
+  \item Jak często twój wolny czas jest spędzony z rodziną
+  \item Jak często twój wolny czas spędzony jest z przyjaciółmi
+  \item Jakie są aktywności czasu wolnego które najczęściej wykonujesz z przyjaciółmi (wymień 3 i podaj ile godzin w tygodniu średnio trwają)
+\end{enumerate}
+
+
+Argumentami za są:
+\begin{enumerate}
+  \item Łatwa dostępność
+  \item Różnorodność użytkowników
+  \item Cena przeprowadzenia badania
+\end{enumerate}
+
+Wadami zaś
+
+\begin{enumerate}
+  \item Wybiórczość (większe prawdopodobieństwo na wypełnienie przez ludzi spełniających wolny czas w internecie)
+  \item Mała rzetelność - ciężko wymusić uczciwe wypełnienie przez użytkowników
+  \item Ograniczenia długości - łatwo zniechęcić użytkownika do wypełniania
+\end{enumerate}
+
+\section{Zadanie 3.8}
+
+\subsection {Pytanie}
+
+Wymień i opisz mechanizm budowania marki w serwisie WW i poza nim.
+
+\subsection {Odpowiedź}
+
+Mechanizm budowania marki w serwisie WW oraz poza nim różni się zasadniczo od siebie.
+W działalności klasycznej marka budowana jest poprzez np przywiązanie do pewnej grupy reprezentującej markę.
+Reklamy w różnej formie nagrywane są przez tych samych aktorów, ich wizerunek staje się twarzą firmy.
+Dodatkowym aspektem jest przywiązanie wartości do firmy klasyczny przykład to np precyzja, przywiązanie do
+działalności, długoletnia tradycja itd. Dodatkowo w klasycznym marketingu stosuje się przywiązanie do
+znaku firmowego, loga, cytatu podsumowującego firmę, przykładem może być "Zawsze coca-cola" czy 
+"Biedronka, codziennie niskie ceny". 
+
+Budowanie wizerunku firmy w serwisie WW polega natomiast na rozszerzeniu informacji o firmie (np serwisy informacyjne
+na temat filmów, ciekawostki). Dodatkowym przykładem jest rozszerzanie świata firmy aby stał się przeżyciem oraz
+doświadczeniem dla każdego "wtajemniczonego" w życie produktu ( np serial "Archer" umieścił szereg zagadek w filmie które
+kontynuowały się przez liczne serwisy WWW po to aby znaleść stronę jednego z bohaterów serialu). Dodatkowym przykładem jest
+wzbudzenie pozytywnych emocjii, np reklama "Old spice" stała się niejako symbolem samym w sobie, firma dostarczyła
+dodatkowo serwis www w którym użytkownik mógł grać na mięśniach bohatera abstrakcyjnej reklamy.
+
+\section{Zadanie 4.1}
+
+\subsection {Pytanie}
+
+Z jakich elementów składa się typowy e-sklep?
+
+\subsection {Odpowiedź}
+
+Typowy e-sklep składa się z dwóch głównych części.
+
+Pierwszą jest back-end w którego skład wchodzą:
+
+\begin{itemize}
+  \item Administracja użytkownikami
+  \item Administracja treścią 
+  \item Administracja produktami 
+  \item Administracja kategoriami 
+  \item Obsługa sprzedaży 
+\end{itemize}
+
+Drugą jest zaś front-end; strona obsługująca klientów
+w jej skład wchodzi:
+
+\begin{itemize}
+  \item Strona główna
+  \item Strona kategorii produktu
+  \item Strona poszczególnych produktów
+  \item Strona koszyka
+\end{itemize}
+
+\section{Zadanie 4.2}
+
+\subsection {Pytanie}
+
+Jakie znasz modele sklepów internetowych?
+
+\subsection {Odpowiedź}
+
+Modele sklepów internetowych to:
+\begin{itemize}
+  \item Samodzielne sklepy www
+  \item Działalności w ramach pasażu handlowego
+  \item Forma mieszna
+  \item Hipermarkety internetowe
+\end{itemize}
+
+\section{Zadanie 4.3}
+
+\subsection {Pytanie}
+
+Wymień i opisz trzy pakiety oprogramowania obsługujące sklepy internetowe.
+
+\subsection {Odpowiedź}
+
+Znanymi mi systemami obsługującymi sklepy internetowe są:
+\begin{itemize}
+  \item Joomla eshop
+  \item Django shop module
+  \item Paypal
+\end{itemize}
+
+Joomla eshop jest to bardzo łatwy system zarządzania treścią, jest to darmowy
+open sourcowy produkt. Dodatek do niego pozwala na dodawanie produktów z ceną 
+oraz pogrupowanych w kategorie do strony. Dodatkowo moduł umożliwia także śledzenie
+historii zamówień, danych użytkownika, wsparcie sprzedaży oraz logistyki.
+
+Django shop module jest bardzo podobnym modułem opartym o technologie Django w języku python.
+Django jest to także darmowy troche bardziej zaawansowany framework tworzenia stron internetowych
+zapewnia on dużo bardziej nisko poziomowy dostęp do kontroli przepływu informacji na stronie.
+
+Paypal jest to serwis obsługujący płatności online pobiera on 3\% każdej transkacji oraz umożliwia bardzo
+łatwą autentykacje użytkowników. Zaletami serwisu jest łatwość jego obsługi oraz bardzo łatwa intergacja
+z kartami płatnościowymi oraz jego szeroka rozpoznawalność.
+
+
+\section{Zadanie 4.4}
+
+\subsection {Pytanie}
+
+Wymień podobieństwa i różnice pomiędzy bankiem tradycyjnym a wirtualnym.
+
+\subsection {Odpowiedź}
+
+Największym podobieństwem banków tradycyjnych oraz wirtualnych jest ich model finansowania
+oparty na płatności przy przelewie (procent od transakcji walutowej lub stała opłata).
+Kolejnym podobieństwem jest koncepcja posiadania konta oraz środków.
+
+Główną różnicą jest ilość pieniędzy trzymanych na kontach w bankach tradycyjnych a wirtualnych.
+Wirtualne serwisy bankowe zwykle posiadają kwoty znacznie mniejsze. Dodatkową różnicą jest 
+brak możliwość pobierania kredytów w bankach internetowych. Najważniejszą według mnie różnicą
+jest według mnie fakt iż wirtualne banki jeszcze nie doprowadziły do bankructwa żadnego kraju.
+
+\section{Zadanie 4.5}
+
+\subsection {Pytanie}
+
+Wymień rodzaje aukcji internetowych. Która Twoim zdaniem jest najlepsza z punktu widzenia
+kupującego, a któraz z punktu widzenia sprzedającego? Odpowiedź uzasadnij.
+
+\subsection {Odpowiedź}
+
+Aukcje internetowe dzielimy na aukcje:
+\begin{itemize}
+  \item Klasyczne
+  \item Holenderskie
+  \item Natychmiastowe
+  \item Jednokrotne i wielokrotne
+  \item Błyskawiczne
+  \item Przetargowe
+  \item Odwrócone
+  \item Wertykalne i horyzontalne
+\end{itemize}
+
+Moim zdaniem najlepszym typem aukcji dla kupującego jest aukcja klasyczna. Przy ustaleniu ceny
+minimalnej ma on pewność iż nie straci na licytowanym przedmiocie, wszystko natomiast ponad kwotę
+ustaloną jako minimum jest jego zyskiem, co przy dużym popycie może osiągnąć znacznie więcej niż
+cena minimalna.
+
+Najlepszą aukcją dla kupującego jest natomiast aukcja odwrócona, znajduje się on zasadniczo w sytuacji
+sprzedającego w aukcji klasycznej. W obu przypadkach często zdaża się iż ludzie płacą za produkt więcej
+niż zapłaciliby w przypadku gdy targowaliby się ze sprzedawcą, bardzo łatwo jest bowiem podwyżać cenę
+maksymalną o pare złotych powyżej swojego maksimum  w przypadku gdy zależy nam na przedmiocie.
+
+
+\section{Zadanie 4.6}
+
+\subsection {Pytanie}
+
+W dowolnych trzech sklepach prześledź regulamin zakupów. Czy znalazły się tam informację o prawach
+klienta (możliwość zwrotu lub wymiany towarów itp)? Znajdź informację o kontroli polskich e-sklepów.
+
+\subsection {Odpowiedź}
+
+Prześledzone przeze mnie regulaminy sklepów to regulaminy serwisu : Allegro, empik, wolczanka.
+
+Wszystkie te serwisy opisują prawa klienta, opisują informację na temat zwrotu produktu zarówno
+nieuszkodzonego jak i wadliwego.
+
+Informację o prawach konsumenta znajdują się w ustawie z dnia 30 maja 2014 roku o prawach przysługujących konsumentowi.
+
+\section{Zadanie 4.7}
+
+\subsection {Pytanie}
+
+Znajdź w sieci oferty sklepów oferujących żywność. Przeanalizuj ich liczbę ofertę i zasięg.
+
+\subsection {Odpowiedź}
+
+Sklepów oferujących żywność są setki tysięcy.
+
+Ich zasięg oraz oferta różni się zasadniczo. Można podzielić je na trzy grupy.
+
+Pierwszą z nich są usługi lokalne. Mają one bardzo ograniczoną ofertę np kebaby lokalne
+grille, restauracje. Ich zasięg wacha się od paru do parunastu kilometrów.
+
+Kolejną grupą są biznesy regionalne, mają one bardziej zróżnicowaną oferte i zasięg parudziesięciu
+kilometrów, są to np pizzerie regionalne.
+
+Ostatnią grupą są supermarkety spożywcze oraz sieciowe restauracje, mają one zasięg globalny w 
+skali kraju, oferta ich różni się zakresem dla serwisów takich jak KFC jest mocno ograniczona
+dla supermarketów jest znacznie bardziej zróżnicowana
+
+\section{Zadanie 4.8}
+
+\subsection {Pytanie}
+
+Porównaj i oceń zawartość dwóch małych przedsiębiorstw produkujących meble.
+
+\subsection {Odpowiedź}
+
+Porównywane serwisy to http://www.meble-z-drewna.pl oraz http://www.agatameble.pl.
+
+Pierwszy serwis oferuje specyficznie wykonane meble z litego drewna. Drugi serwis oferuje
+dużo tańsze meble wykonane z materiałów drewno podobnych lub oklejonej dykty. 
+Zasadniczą różnicą pomiędzy serwisami, pomijając dobrane barwy oraz wygląd, jest ich zakres oferty
+oraz grupa docelowa. Pierwszy serwis oferuje dużo węższą gamę produktów o wysokiej jakości, co za tym
+idzie za grupę docelową obiera średnią klasę społeczną. Drugi serwis jest dużo bardziej bogaty w ofercie,
+produkowane meble są znacznie tańsze, przez co w celu opłacalności produkcji zmuszeni są do większej
+ilościowo sprzedaży.
+
+Oba serwisy uważam a bardzo estetyczne oraz w przystępny sposób przedstawiające zawartość sklepu.
+Uważam za lepszy serwis meble-z-drewna, oferta sklepu wydaj mi się dużo bardziej atrakcyjna, dodatkowo
+dobrane przez nich wygląd strony bardziej przemawia do mojego poczucia estetyki.
+
+
+\section{Zadanie 4.9}
+
+\subsection {Pytanie}
+
+Znajdź w w sieci oferty dwóch firm prowadzących taką samą działalność, z podobnym zakresem terytorialnym.
+Porównaj i wysuń wnioski do jakich klientów skierowana jest ich oferta.
+
+\subsection {Odpowiedź}
+
+Rozpatrywane serwisy to: http://www.fabrykamarzen.waw.pl/ oraz http://lasvegasstyle.pl/.
+
+Oba serwisy prezentują ofertę fryzjerską na terenie Warszawy. Pierwszy z nich już od samego wejścia do serwisu
+sprawia wrażenie ekskluzywnego serwisu, prezentuje wizję artystyczną skupia się na opisaniu ekipy pracującej w serwisie
+zakresu usługi oraz opisu referencji medialncyh
+
+Drugi serwis prezentuje portfolio swoich osiągnięć jako zdjęcia z salonu fryzjerskiego, jedna z zakładek od razu
+opisuje ceny usług, serwis skupia się na prezentacji wnętrza salonu oraz opinii klientów.
+
+Pierwszy serwis ma według mnie trafić do ludzi zainteresowanych modą, osób bogatych, prawdopodobnie publicznych
+lub związanych z mediami, dla których cena usługi nie jest tak ważna jak jej jakośc.
+
+Drugi serwis natomiast celuje według mnie w ludzi młodych próbujących dobrać fryzurę na weekendową imprezę w 
+przystępnej cenie.
+
+\section {4.10}
+
+\subsection {Pytanie}
+
+Znajdź stronę małej firmy o lokalnym zasięgu, średniej firmy i międzynarodowej korporacji. Czy Twoim zdaniem
+sieć jest narzędziem dużym, średnim, czy małym przedsiębiorstwom? W jakim zakresie każde z tych przedsiębiorstw
+może i powinno wykorzystywać internet?
+
+\subsection {Odpowiedź}
+
+Moim zdaniem internet jest uniwersalnym narzędziem wykorzystywanym przez firmy różnej wielkości.
+Każda z firm, w zależności od wielkości wykorzystuje go jako narzędzie do osiągnięcia innych celów.
+Małe i średnie przedsiębiorstwa generalnie wykorzystują internet jako dodatkowy sposób sprzedaży.
+Dodatkowo ułatwia to często administracją firmy. Duże przedsiębiorstwa lub międzynarodowe korporacje
+bardzo często wykorzystują internet jako źródło reklamy, dodatkowo w związku z globalnym charakterem
+sieci WW firmy prowadzące działaność opartą o internet mają tendencję do szybkiego rozrastania się.
+
+Bardzo częstym błędem popełnianym przez małe przedsiębiorstwa jest wykorzystywanie internetu jako źródła
+reklamy. Z powodu małych finansów niestety reklamy takie są bardzo często nieskuteczne, dodatkowo
+brak wiedzy i ustawienia dobrego odbiorcy reklamy powoduje bardzo mało skuteczną reklame, wydaje mi się
+że korporacje oraz średnie przedsiębiorstwa dość dobrze wykorzystują internet.
+
+\section{Zadanie 4.11}
+
+\subsection {Pytanie}
+
+Załóżmy że masz zamiar kupić aparat fotograficzny i wodoszczelną obudowę do robienia zdjęc pod wodą.
+Znajdź potrzebne infromację, w tym charakterystykę funkcji, opinie użytkowników, opisy modeli oraz ceny.
+Przeanalizuj proces wyboru produktu w porównaniu z procesem realizowanym w tradycyjny sposób.
+
+\subsection {Odpowiedź}
+
+Proces dobierania aparatu przy użyciu internetu dużo bardziej przypomina według mnie proces nauki.
+Przy początku wyboru kierowałem się jedynie ceną zestawu przy porównywalnych parametrach. Nie wiedziałem jednak
+które z nich są istotne, miałem niejakie wyobrażenie o tym iż istotną cechą jest szczelność obudowy i rozdzielczość
+apratu. Podczas czytania opinie o aparatach o podobnych parametrach dowiedziałem się natomiast że głównym problemem
+robieniem zdjęc pod wodą jest światło, przy dużej rozdzielczości niektórych aparatów nie będe w stanie wykonać zdjęć
+na większej głębokości gdyż przesłona aparatu uniemożliwi mi na dostanie się odpowiedniej ilości światła do matrycy.
+Po przejrzeniu opinii użytkowników dowiedziałem się bardzo wielu istotnych rzeczy których firm należy unikać.
+
+W przypadku klasycznego wybierania bardzo problematyczne jest zebranie tak kompletnej informacji na temat produktu.
+Zwykle kontaktuje się jedynie ze sprzedawcą jednego sklepu który porówna jedynie aparaty które ma w ofercie, dodatkowo
+jeśli nie mam odpowiedniej widzy na temat przedmiotu nie poświęci on wystarczającej ilości czasu na skupienie się na
+szczegółach które mnie mogą nie interesować skupi się jedynie na rzeczach które uważam za istotne aby doprowadzić do
+kupna produktu.
+
+\section{Zadanie 4.12}
+
+\subsection {Pytanie}
+
+Scharakteryzuj polskie firmy obecne w sieci. W jakim celu firmy te wykorzystują internet?
+
+\subsection {Odpowiedź}
+
+Według firmy Google, najpopularniejszymi firmami prowadzącymi serwisy internetowe w polsce są serwisy informacyjne
+oraz serwis aukcyjny allegro. Są to firmy najpopularniejsze w polskim rynki, z wyjątkiem serwisu allegro są to praktycznie
+tylko serwisy informacyjne oraz rozrywkowe.
+
+Ranking: http://interaktywnie.com/biznes/artykuly/raporty-i-badania/100-najpopularniejszych-stron-w-polsce-wedlug-google-nasza-klasa-poza-czolowka-18365.
+
+\section{Zadanie 4.13}
+
+\subsection {Pytanie}
+
+Jakie grupy produktów są najpowszechniej oferowane w sieci? Jak sądzisz dlaczego?
+
+\subsection {Odpowiedź}
+
+Grupą najczęściej oferowanych serwisó w sieci są gry komputerowe oraz sprzęt elektronczny.
+Sądze iż są dwa powody, po pierwsze profil w który się wpisuje ze względu na spędzanie 
+dużej ilości czasu grając z przyjaciółmi powoduje iż taki właśnie typ reklam jest mi przedstawiany.
+Dodatkowym aspektem jest także wstępny filtr - aby zobaczyć te reklamy trzeba mieć internet w związku
+z czym trzeba mieć sprzęt elektroniczny, ma się też predyspozycje w postaci komputera do grania w gry.
+Ostatnim aspektem jest wielkość rynku gamingowego który ostanio zdecydowanie wzrasta.
+
+\section{Zadanie 4.14}
+
+\subsection {Pytanie}
+
+Znajdź w internecie najnowsze  wyniki badań dotyczących znajomości portali i serwisów internetowych. Jak można wykorzystać te informacje w przedsiębiorstwie?
+
+\subsection {Odpowiedź}
+
+\section{Zadanie 4.15}
+
+Badania dotyczące popularności portali i serwisów znajdują się na http://www.infomonitor.pl/download/e-commerce-w-polsce-2014.pdf.
+Informację tę można wykorzystać na wiele sposobów. Można na przykład targetować podobnych klientów jak najpopularniejsze serwisy,
+dodatkowo można próbować umieścić w takim serwisie reklamę firmy. Innym sposobem może być udoskonalenie serwisu poprzez obserwację
+i analizę sukcesu innych witryn.
+
+\subsection {Pytanie}
+
+Jednym z mitów na temat Internetu jest przekonanie, że sieć umożliwia odniesienie sukcesu każdej firmie, także zupełnie nieznanej lub dopiero rozpoczynającej działalność.
+Jak sądzisz, czy to prawda czy fałsz? Odpowiedź uzasadnij.
+
+\subsection {Odpowiedź}
+
+Uważam iż mit ten jest mocno przesadzony. Wywodzi się on z sukcesów takich firm jak Facebook czy Google.
+Istnieje dużo przypadków w których internet może zdecydowanie przyspieszyć rozwój przedsiębiorstwa.
+Nie jest to jednak uniwersalna forma rozwoju działalności. Sam obecnie pracuje w małym start upie.
+Zajmujemy się produkcją sprzętu prezentującego przy pomocy ultradźwięków dotyku na ręce użytkownika.
+Internet jest dla nas zdecydowanie nienajlepszą formą reklamy głównie ze względu na model biznesowy.
+Głównymi klientami naszej firmy są ogromne koncerny, a co za tym idzie dotarcie do nich poprzez marketing
+internetowy jest praktycznie niemożliwe. W przypadku innej działąlności, prowadzonej przez moją bliską znajomą
+reklama w internecie bardzo przyspieszyła rozwój jej przedsięwzięcia. Jej firma zajmuje się produkcją biżuterii, 
+w ciągu miesiąca od wypozycjonowaniu w wyszukiwarce jej firma przynisła dziesięciokrotnie większe zyski.
+Podsymowując wydaje mi się iż mit ten jest mocno przesadzony z powodu firm odnoszących spektakularne sukcesy
+dzięki marketingowi, jest to także mechanizm samonapędzający się - ludzie dużo chętnie przekazują sobie informację
+na temat sukcesy firmy niż jej updaku. Dodatkowo firma która odniosła sukces dzięki marketingowi internetowemu
+jest dobrze znana wszystkim, gdyż na tym polega jej sukces.
+
+\end{document}

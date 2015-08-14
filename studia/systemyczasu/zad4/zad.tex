@@ -1,0 +1,167 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+
+\usetikzlibrary{external}
+\tikzexternalize
+\tikzset{external/force remake}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Systemy Czasu Rzeczywistego zadanie 4: wstęp do projektu jednostki typu master\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Zadanie 4.1}
+
+W celu wyznacznia średnich czasów odstępów pomiędzy transmisjami napisany zostały dwa programy
+jeden, działający w tle odbierał w czasie ciągłym dane z wirtualnego portu szeregowego, drugi
+nadawał w sposób ciągły 500000 razy ten sam bajt, następnie sumował czas odstępu pomiędzy transmisjami.
+Czas całkowity został podzielony przez
+ilość wysłanych bajtów w celu oszacowania czasu średniego pomiędzy dwiema transmisjami.
+
+Czas średni w przypadku gdy nie jest uruchomiona żadna aplikacja:
+
+\[t_{avg}=3.78859996796\mu s\]
+
+Czas średni w przypadku otwarcia 10 aplikacji:
+
+\[t_{avg}=4.49301815033\mu s\]
+
+Jak można było przypuszczać, zwiększenie używania zasobów systemowych powoduje spowolnienie programów
+nie uznanych przez system operacyjny jako krytyczne czasowo. W związku z następującymi wywłaszczeniami 
+na poczet aplikacji wideo oraz audio, program komunikujący się z portem szeregowym zostaje częściej wywłaszczony
+co powoduje zwiększenie średniego czasu pomiędzy transmisjami.
+
+\section{Zadanie 4.2}
+
+W celu wyznaczenia czasów transmisji ciągu znaków napisane zostały dwa niezależnie działające programy.
+Jeden był odpowiedzialny za wysyłanie ciągu znaków do wirtualnego portu szeregowego oraz mierzenie czasu który
+upłynął od początku do końca transmisji, oraz programu ciągle odbierającego dane z wirtualnego portu.
+Następnie na podstawie tych danych stworzone zostały 
+histogramy czasów przesłania pomiędzy kolejnymi bajtami (obliczone dla czasu całkowitego podzielonego
+na ilość bajtów w transmisjii).
+
+Histogramy pokazują częstość występowania w danych grupach odstęp pomiędzy minimalnym a maksymalnym
+czasem został podzielony na 100 grup następnie każdy z czasów został zakwalifikowany do odpowiednij grupy.
+
+Dla uruchomienia programu bez działających aplikacji otrzymujemy następujący histogram:
+
+\begin{tikzpicture}
+  \begin{axis}[
+       yticklabels={,,}
+  ] 
+    \addplot+ table [x, y, col sep=comma] {resseqnoapp.dat};
+  \end{axis}
+\end{tikzpicture}
+
+Czasy minimalne oraz maksymalne to odpowiednio:
+\[t_{min} = 3.81034283959 \mu s\]
+\[t_{max} = 30.4877758026 \mu s\]
+
+\begin{tikzpicture}
+  \begin{axis}[
+       yticklabels={,,}
+  ] 
+    \addplot+ table [x, y, col sep=comma] {resseqapps.dat};
+  \end{axis}
+\end{tikzpicture}
+
+Czasy maksymalne oraz minimalne to odpowiednio:
+
+\[t_{min} = 4.51889149122 \mu s\]
+\[t_{max} = 4.97996807098 ms\]
+
+Z histogramów wynika iż przy aplikacji działającej samodzielnie mamy dużo mniejszy rozrzut czasów pomiędzy poszczególnymi transmisjami.
+Wiąże się to z tym, iż gdy w systemi nie działają żadne krytyczne czasowo programy (takie jak streaming obrazów lub dźwięku) aplikacja
+może w niezakłócony sposób sekwencyjnie wykonywać program. W związku z tym iż system operacyjny zawsze musi cyklicznie przeprowadzać
+introspekcję w celu identyfikacji zadań, w zależności od tego kiedy przypadnie cykl aktywności systemu operacyjnego, poszczególne 
+wykonania w pętli mogą zostać nieznacznie opóźnione.
+
+W przypadku dużej aktywności mamy dużo większe rozrzucenie wyników, niektóre z nich są 3 rzędy wielkości wyższe niż przy niezakłuconym wykonaniu
+programu. Wiąże się to z faktem iż działające w tle aplikacje (głownie takie jak streaming mediów) mogą być aplikacjami krytycznymi czasowo.
+Co za tym idzie mogą wywłaszczyć proces dokonujący obliczenia na procesorze i zająć procesor w celu natychmiastowego wykonania niezbędnych
+czynności do niezakłóconego przebiegu aplikacji. Klasycznym przykładem może być na przykład wczytanie danych z karty sieciowej do bufora
+filmu video w pamięci w przypadku zbliżania się do jego końca przez aplikację odtwarzającą. W związku z faktem iż systemy operacyjne takie jak
+OSX (na którym testowano aplikację) przeznaczone są głównie dla użytkowników końcowych, promują one aplikację dostarczające użytkownikowi rozrywki.
+Dużo ważniejsze jest dla nich obsłużenie komunikacji z urządzeniami wyjścia niż z portem szeregowym. W związku z czym nie możliwe jest zapewnienie
+szybkiej komunikacji z portami zewnętrznymi.
+
+\section{Wnioski}
+
+
+W związku z tym iż procesy krytyczne mogą mięc znaczny wpływ na odstęp pomiędzy transmisjami systemy takie jak windows czy OSX nie są dobre
+dla krytycznych czasowo zastosowań. Przypadkowe zabieranie zasobów przez systemy o wysokim priorytecie może wywłaszczyć proces który komunikuje się
+z siecią modbus. Rozwiązaniem jest albo zmiana priorytetu wykonywanego programu, co jest rozwiązaniem niepewnym gdyż nie istnieje gwarancja
+iż system operacyjny nie wywłaszczy go na poczet procesu systemowego, lub stosowanie systemów specjalnie dopasowanych do realizacja zadań
+krytycznych czasowo.
+
+\end{document}

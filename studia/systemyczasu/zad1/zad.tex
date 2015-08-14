@@ -1,0 +1,177 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Systemy Czasu Rzeczywistego zadanie 1: Sieci AS-i\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Zadanie 1.1}
+
+Czas dostępu od urządzenia jest to parametr określający daną sieć.
+Zależy on od warstwy fizycznej oraz danych sieci a także bardzo często (również w przypadku sieci as-i) od ilości urządzeń.
+
+Czasami charakteryzującymi dostęp do urządzenia są czas minimalny oraz maksymalny \(t_{min}\) oraz \(t_{max}\).
+Rozważyć można dwa przypadki, pierwszy - optymistyczny w którym urządzenie typu slave ma zostać wywołane przez urządzenie
+typu master jako następne w kolejności. W tym wypadku załóżmy że wywoływanie rozpocznie się natychmiast. Urządzenie master
+musi wysłać zatem 14 bitów pakietu wywołującego, następnie następuję pauza typu master o długości 3-10 bitów.
+Ponieważ zajmujemy się minimalnym czasem dostępu, załóżmy zatem iż pauza trwa 3 bity. Następnym etapem jest odpowiedź
+przez urządzenie typu slave, transmisja zajmuję 7 bitów i co za tym idzie cały transfer (nie liczę pauzy typu slave gdyż w tym czasię
+urządzenie master może rozpocząć już analizę danych) wynosi 24 bity, co przy prędkości 167 kb/s wynosi:
+
+\[1s / 167000 * 24 = 144 \mu s\]
+
+Dodatkowo możliwe jest nieznaczne przyspieszenie spowodowane przyspieszonymi zboczami podkładając zatem przesłane przez mastera 14 i sleva
+7 bitów otrzymujemy przyspieszenie maksymalne zgodne z tolerancją wynosi -0.5 \(\mu s\) zyskujemy zatem dodatkową \(1 \mu s\).
+Czyli minimalny czas dostępu wynosi \(143 \mu s\)
+
+
+Warto zauważyć iż czas minimalny nie zależy od ilości urządzeń w sieci, należy jednak pamiętać że zależy prawdopodobieństwo jego wystąpienia.
+
+Zakładając natomiast najbardziej pesymistyczny przypadek możemy wyliczyć maksymalny czas dostępu. Zakładając że transfer z urządzeniem
+właśnie się zakończył musimy przeczekać na naszą kolej, urządzenie typu master wykona cykliczne odpytanie pozostałych urządzeń.
+Zakładając że w sieci istnieje 9 innych urządzeń (oraz urządzenie zerowe) należy dodać zatem 10 cykli odpytania. Każdy z nich może zając
+maksymalnie 31 bitów, należy także uwzględnić tym razem 1 bit stopu typu slave po każdej transmisji, co daje nam 32 bity na urządzenie.
+Całkowity czas wynosi zatem:
+
+\[1/ 167000 * 32 * 10 = 1,91 ms \]
+
+
+Dodatkowym czynnikiem wpływającym na wydłużenie się tego czasu jest tolerancja długości sygnału. Każdy z 10 sygnałów może się wydłużyć o
+tolerancje impulsów przy obu transferach, urządzenie typu master nadaje 14 bitów urządzenie typu slave natomiast 7.
+Podkładamy więc obie te liczby do wzoru na maksymalne tolerowane opóźnienie:
+
+\[(14+3\mu s) + 1\ = 18 \mu s]\]
+\[(7+3\mu s) + 1\ = 11 \mu s]\]
+
+Co dodane do całości powoduje dodatkowe opóźnienie o 290 \(\mu s\) całkowite opóźnienie wynosi zatem \(2.3 ms\).
+Należy pamiętać jednak iż są to czasy przesyłu jednego transferu. W przypadku gdy urządzenie typu slave musi przesłać więcej niż 4 bity
+informacji, czas dostępu znacznie się wydłuża.
+
+W przypadku gdy urządzeń jest zaledwie 10, wersja standardu nie odgrywa roli w czasach dostępu.
+
+\section{Zadanie 1.2}
+
+W celu obliczenia ilości niezbędnych urządzeń należy przede wszystkim wyliczyć ile urządzeń typu slave
+niezbędnych będzie do realizacji układu. Każde urządzenie typu slave może zostać połączone z 4 urządzeniami wejscia wyjscia.
+Całkowita ilość urządzeń końcowych wynosi 1200 sensorów oraz 600 aktorów czyli 1200 urządzeń wejścia i 600 wyjścia. Do realizacji układy z taką ilością
+niezbędne jest 300 urządzeń typu slave, gdyż możliwe jest podłączenie aż do 4 urządzeń wejścia i 4 wyjścia do każdego z nich. 
+
+Zgodnie ze specyfikacją 2.0 urządzenie master może adresować do 31 urządzeń typu slave co za tym idzie niezbędnych będzie 10 urządzeń
+typu master.
+W przypadku gdy zastosowany zostanie standard 2.11 ich liczba będzie wynosić zaledwie 5, jedno z nich może adresować bowiem aż do 62 urządzeń
+typu slave.
+
+
+\section{Zadanie 1.3}
+
+
+W celu pokrycia wszystkich urządzeń wyjścia potrzebujemy 200 urządzeń 4e3a. Do tego zostaje nam 400 urządzeń wejściowych które
+należy umieścić w kolejnych 100 urządzeniach 4e. Koszt całkowity wynosi wtedy 3000 kredytów i jest taki sam jak przy zastosowaniu
+urządzeń 4e4a oraz 4e. Należy zatem rozłożyć optymalnie 300 urządzeń w sieciach. Najlepszym ułożeniem jest ułożenie ich w 5 sieci
+typu 2.11, co za tym idzie potrzebne jest 5 urządzeń master typu 2.11, tyle samo zasilaczy oraz 200 urządzeń 4e3a oraz 100 typu 4e.
+Całkowity koszt wynosi zatem 4000.
+
+\section{Zadanie 1.4}
+
+\subsection{1 milisekunda}
+
+W przypadku opóźnienia maksymalnego \(1ms\) ilość maksymalna urządzeń typu slave dla każdego urządzenia master wynosi 5.
+
+W tym przypadku nie ma sensu korzystać z urządzeń master typu 2.11.
+
+Urządzenia należy podzielić na jaknajmniej zbiorów sieci typu 2.0, co za tym idzie kluczowe jest umieszczenie urządzeń
+wejścia w jaknajmniejszej ilości urządzeń typu slave. W tym celu zastosujemy jaknajwięcej urządzeń typu 4e3a (mają one maksymalną
+ilość wyjść oraz są tańsze niż 4e4a a nie jest potrzebne aż tyle urżądzeń wyjściowych jest ich mniej niż 3/4). 
+W celu pokrycia wszystkich urządzeń wyjścia potrzebujemy 200 urządzeń 4e3a. Do tego zostaje nam 400 urządzeń wejściowych które
+należy umieścić w kolejnych 100 urządzeniach 4e. Co za tym idzie potrzebujemy 100 urządzeń typu master w wersjii 2.0 oraz 100 zasilaczy.
+Całkowity koszt wyniesie zatem 20500 jednostek.
+
+\subsection{5 milisekund}
+W przypadku opóźnienia maksymalnego \(5ms\) ilość maksymalna urządzeń typu slave dla każdego urządzenia master wynosi 25.
+
+W tym przypadku, tak samo jak i w poprzednim nie ma sensu wykorzystywać urządzeń typu master w wersji 2.11. Co za tym idzie
+należy jednostki rozłożyć w więcej siecii, typy urządzeń slave zostają w dokładnie takiej samej ilośći, jest to bowiem optymalne
+rozłożenie. W celu rozłożenia 300 urządzeń wystarczy nam tym razem 12 urządzeń typu master oraz 12 zasilaczy. Całkowity 
+koszt takiej konstrukcji wynosi zatem 5100 jednostek.
+
+\subsection{8 milisekund}
+W przypadku opóźnienia maksymalnego \(8ms\) ilość maksymalna urządzeń typu slave dla każdego urządzenia master wynosi 40.
+
+W tym przypadku możemy podzielić urządzenia na 6 sieci typu 2.11 oraz 2 typu 2.0. Całkowity koszt wyniesie wtedy 4550.
+
+\subsection{12 milisekund}
+W przypadku opóźnienia maksymalnego \(12ms\) ilość maksymalna urządzeń typu slave dla każdego urządzenia master wynosi 60.
+
+W tym przypadku rozłożenie urządzeń typu master możemy ułożyć w 5 sieci typu 2.11 co za tym idzie koszt całkowity wyniesie 4200 jednostek.
+
+\end{document}
