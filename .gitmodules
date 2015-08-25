@@ -1,0 +1,3 @@
+[submodule "mapgen/cairomm"]
+	path = mapgen/cairomm
+	url = git://git.cairographics.org/git/cairomm
