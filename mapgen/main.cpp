@@ -22,7 +22,8 @@ namespace bp = boost::polygon;
 struct Point{
   double x;
   double y;
-  Point (double x, double y) : x(x), y(y) {}
+  double z;
+  Point (double x, double y, double z) : x(x), y(y), z(z) {}
 };
 
 template <>
@@ -43,10 +44,11 @@ int main() {
     boost::random::uniform_int_distribution<> index_dist(0, 10000);
     std::vector< Point> points;
     for(int i = 0; i < 1000; ++i) {
-        double x, y;
-        x = index_dist(rng) / 10.0f;
-        y = index_dist(rng) / 10.0f;
-        Point b {x, y};
+        double x, y, z;
+        x = index_dist(rng) / 10.0;
+        y = index_dist(rng) / 10.0;
+        z = index_dist(rng);
+        Point b {x, y, z};
         points.push_back(b);
     }
     cairo::cairo_surface_t *surface;
@@ -66,8 +68,8 @@ int main() {
     for (bp::voronoi_diagram<double>::const_edge_iterator it = vd.edges().begin();
         it != vd.edges().end(); ++it) {
       if (it->vertex1() != NULL && it->vertex0() != NULL && it->is_primary()) {
-        Point p1 {it->vertex1()->x(), it->vertex1()->y()};
-        Point p2 {it->vertex0()->x(), it->vertex0()->y()};
+        Point p1 {it->vertex1()->x(), it->vertex1()->y(), 0.0};
+        Point p2 {it->vertex0()->x(), it->vertex0()->y(), 0.0};
         cairo::cairo_move_to (cr, static_cast<int>(std::floor(p1.x)), static_cast <int> (std::floor(p1.y)));
         cairo::cairo_line_to (cr, static_cast<int>(std::floor(p2.x)), static_cast <int> (std::floor(p2.y)));
         cairo::cairo_stroke(cr);
@@ -85,7 +87,7 @@ int main() {
          it != vd2.cells().end(); ++it) {
       const bp::voronoi_diagram<double>::cell_type &cell = *it;
       const bp::voronoi_diagram<double>::edge_type *edge = cell.incident_edge();
-      Point avarage {0.0, 0.0};
+      Point avarage {0.0, 0.0, 0.0};
       int count = 0;
       do {
         if (edge->is_primary() && edge->vertex1() != NULL && edge->vertex0() != NULL){
@@ -105,26 +107,23 @@ int main() {
         points[index].y = avarage.y;
       }
     }
-    int index = 0;
     for (bp::voronoi_diagram<double>::const_cell_iterator it = vd2.cells().begin();
          it != vd2.cells().end(); ++it) {
       const bp::voronoi_diagram<double>::cell_type &cell = *it;
       const bp::voronoi_diagram<double>::edge_type *edge = cell.incident_edge();
-      index++;
-      if(index % 2 == 0){
-        cairo::cairo_set_source_rgb (cr, 0, 0, 255);
-      } else {
-        cairo::cairo_set_source_rgb (cr, 255, 0, 255);
-      }
       bool first = true;
+      std::size_t index = it->source_index();
+      int grsc = (points[index].z / 10000.0) * 255.0;
+      cairo::cairo_set_source_rgb (cr, grsc, grsc, 255);
+      std::cout << grsc << std::endl;
       do {
         if (edge->is_primary() && edge->vertex1() != NULL && edge->vertex0() != NULL){
           if(first){
             first = false;
-            Point p1 {edge->vertex0()->x(), edge->vertex0()->y()};
+            Point p1 {edge->vertex0()->x(), edge->vertex0()->y(), 0.0};
             cairo::cairo_move_to (cr, static_cast<int>(std::floor(p1.x)), static_cast <int> (std::floor(p1.y)));
           } 
-          Point p2 {edge->vertex1()->x(), edge->vertex1()->y()};
+          Point p2 {edge->vertex1()->x(), edge->vertex1()->y(), 0.0};
           cairo::cairo_line_to (cr, static_cast<int>(std::floor(p2.x)), static_cast <int> (std::floor(p2.y)));
         }
         edge = edge->next();
@@ -136,8 +135,8 @@ int main() {
     for (bp::voronoi_diagram<double>::const_edge_iterator it = vd2.edges().begin();
         it != vd2.edges().end(); ++it) {
       if (it->vertex1() != NULL && it->vertex0() != NULL && it->is_primary()) {
-        Point p1 {it->vertex1()->x(), it->vertex1()->y()};
-        Point p2 {it->vertex0()->x(), it->vertex0()->y()};
+        Point p1 {it->vertex1()->x(), it->vertex1()->y(), 0.0};
+        Point p2 {it->vertex0()->x(), it->vertex0()->y(), 0.0};
         cairo::cairo_move_to (cr, static_cast<int>(std::floor(p1.x)), static_cast <int> (std::floor(p1.y)));
         cairo::cairo_line_to (cr, static_cast<int>(std::floor(p2.x)), static_cast <int> (std::floor(p2.y)));
         cairo::cairo_stroke(cr);
@@ -146,8 +145,8 @@ int main() {
       for (bp::voronoi_diagram<double>::const_edge_iterator it = vd2.edges().begin();
           it != vd2.edges().end(); ++it) {
         if (it->vertex1() != NULL && it->vertex0() != NULL && it->is_primary()) {
-          Point p1 {it->vertex1()->x(), it->vertex1()->y()};
-          Point p2 {it->vertex0()->x(), it->vertex0()->y()};
+          Point p1 {it->vertex1()->x(), it->vertex1()->y(), 0.0};
+          Point p2 {it->vertex0()->x(), it->vertex0()->y(), 0.0};
           cairo::cairo_move_to (cr, static_cast<int>(std::floor(p1.x)), static_cast <int> (std::floor(p1.y)));
           cairo::cairo_line_to (cr, static_cast<int>(std::floor(p2.x)), static_cast <int> (std::floor(p2.y)));
           cairo::cairo_stroke(cr);

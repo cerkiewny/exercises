@@ -1,2 +1,5 @@
-var example = 'example string';
-console.log(example.length)
+
+
+
+var x = 'example string';
+console.log(x.length);
