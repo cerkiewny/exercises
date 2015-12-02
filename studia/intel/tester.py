@@ -105,10 +105,10 @@ if __name__ == "__main__":
 
     test_o = open('hmmtest.out', 'w+')
     test_i = open('hmmtest.in', 'w+')
-    test_o.writeline(hmm.initialize())
-    test_i.writeline(hmm.observation())
+    test_o.write(hmm.initialize() + '\n')
+    test_i.write(hmm.observation() + '\n')
     for a in range (0, numbtests):
-        test_o.writeline(hmm.step())
-        test_i.writeline(hmm.observation())
+        test_o.write(hmm.step() + '\n')
+        test_i.write(hmm.observation() + '\n')
     test_o.close()
     test_i.close()
