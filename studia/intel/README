@@ -1,0 +1,48 @@
+W celu utworzenia scenariusz testowego nalezy przy pomocy programu tester.py
+przeczytac plik z informacjami prawdopodobienstwa transmisji oraz poczatkowych
+prawdopodobienstw stanow.
+
+Przykladowy format pliku:
+
+---------------------------------------
+sunny windy rainy snowy cloudy
+0.3 0.3 0.2 0.2 0.3
+
+0.7 0.1 0.2 0.3 0.3
+0.7 0.3 0.2 0.1 0.2
+0.3 0.4 0.5 0.1 0.1
+0.3 0.2 0.3 0.1 0.3
+0.3 0.2 0.5 0.3 0.2
+
+hot cold wet dry slippy nice terrible
+0.5 0.1  0.2 0.3 0.1    0.3  0.2
+0.2 0.3  0.2 0.1 0.2    0.1  0.7
+0.1 0.4  0.6 0.1 0.3    0.1  0.6
+0.1 0.6  0.3 0.3 0.1    0.3  0.2
+0.2 0.2  0.3 0.2 0.1    0.1  0.7
+---------------------------------------
+
+
+znaczenia poszczegolnych linii.
+
+Pierwsza linia sa to nazwy (odzdzielone pojedynczymi spacjami)
+mozliwych stanow modelu Markova.
+
+
+Kolejny rzad zawiera przypisane im prawdopodobienstwa wystapienia w pierwszym kroku symulacji.
+Kolejna linia jest to pusta linia oddzielajaca prawdopodobienstwa poczatkowe od macierzy
+prawdopodobienstw transmisji pomiedzy poszczegolnymi stanami.
+
+Nastepnie po kolejnej pustej linii wystepuja stany obserwowalne modelu.
+Po ich wymienieniu nalezy wypisac prawdopodobienstwa wystapienia danej obserwacji w kolejnych stanach.
+
+Po wprowadzeniu niezbednych danych nalezy je zapamietac w pliku "propagation.mat" nastepnie
+poleceniem "python tester.py" nalezy uruchomic tester algorytmu viterbiego.
+Utworzy on losowa przestrzen stanow ukrytych w modelu Markova podanym wpliku "progatanion.mat"
+zostana utworzone nastepujace pliki hmmtest.in oraz hmmtest.out. Sa to odpowiednio plik obserwacji
+wygenerowanych losowo oraz plik stanow wzorcowy, wykorzystany do wygenerowania obserwacji.
+Nastepnie nalezy uruchomic przekompilowany program viterbi.cpp. Powinien on bez otwierania 
+pliku hmmtest.out wygenerowac hmmtest.res - plik wyniku. Nastepnie mozna porownac wyniki przy pomocy
+dowolnego narzedzia tekstowego. Pliki te sa to parwidlowe, oraz najbardziej prawdopodobne sekwencje
+stanow powodujacych dana obserwacje.
+
