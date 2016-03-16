@@ -44,11 +44,11 @@ class state{
 
 void viterbi(vector<state *> states, string in, string out){
   for(int i = 0; i < states.size();i ++){
-    cout << states[i]->name << endl; 
+    //cout << states[i]->name << endl; 
     for(int j = 0; j < states[i]->observ.size(); j ++){
-      cout << states[i]->observ[j]->name;
-      cout << states[i]->observ[j]->prop;
-      cout << endl;
+      //cout << states[i]->observ[j]->name;
+      //cout << states[i]->observ[j]->prop;
+      //cout << endl;
     }
   }
   
@@ -72,7 +72,7 @@ void viterbi(vector<state *> states, string in, string out){
           break;
       }
     iniProp->push_back(states[i]->init_prop * states[i]->observ[observ_in]->prop);
-    cout <<  states[i]->init_prop * states[i]->observ[observ_in]->prop << endl;
+    //cout <<  states[i]->init_prop * states[i]->observ[observ_in]->prop << endl;
 
     paths->push_back(new vector< int > ());
     (paths[0])[i]->push_back(i);;
@@ -82,7 +82,6 @@ void viterbi(vector<state *> states, string in, string out){
     vector< vector < int > * > * newpaths;
     newpaths = new vector< vector < int > * >();
     for(int i = 0; i < states.size(); i++){
-      newpaths->push_back(new vector< int > ());
       iniProp = new vector<float>();
       int beststate;
       int observ_in;
@@ -98,7 +97,10 @@ void viterbi(vector<state *> states, string in, string out){
 
         }
         V[V.size() - 1]->push_back(prob);
-        newpaths[i] = paths[j];
+        (*(*paths)[beststate]).push_back(j);
+        newpaths->push_back((*paths)[beststate]);
+        paths = newpaths;
+
         
       }
       //cout << states[0]->observ[beststate]->name << endl;
@@ -107,11 +109,17 @@ void viterbi(vector<state *> states, string in, string out){
     V.push_back(iniProp);
     
   }
-  for(int i = 0 ; i < V.size(); i ++){
-    for(int j = 0 ; j < V[i]->size(); j++){
-      cout << (*V[i])[j] << " ";
+  int mostprob_ind;
+  float mostprob;
+  for(int j = 0 ; j < V[V.size() -1]->size(); j++){
+    if (mostprob < (*V[V.size() - 1])[j]){
+      mostprob = (*V[V.size() - 1])[j];
+      mostprob_ind = j;
     }
-    cout << endl;
+    for(int i = 0; i < V.size(); i++){
+      res << states[(*(*paths)[mostprob])[i]]->name;
+      res << endl;
+    }
   }
   res.close();
   infile.close();

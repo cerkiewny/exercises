@@ -1,0 +1,370 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage[english]{babel}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\pgfplotsset{compat=1.11}
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Bazy danych\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+\section{Temat projektu}
+
+Tematem wykonanego przeze mnie projektu jest system dystrybuowania zadań w bazie danych Postgres.
+
+
+\newpage
+\section {Wstęp}
+
+
+Celem projektu było wykonanie schematu bazy danych który umożliwiałby dodawanie do kolejki zadań,
+które automatyczny byłyby przekazywane do komputerów / urządzeń podrzędnych.
+Komputery te są identyfikowane w bazie przez adres IP, sam mechanizm wykonania zadania nie został
+zaimplementowany, zamist tego oczekiwane jest dodawanie samodzielnie rezultatów zadań.
+
+\section {Typy danych}
+
+W celu śledzenia czasu życia zadania, oraz stanu komputerów liczących (dalej zwanych "pracownikami"),
+dodane zostały następujące dwa nowe typy danych wyliczeniowych:
+
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE TYPE job_status AS ENUM (
+    'new',
+    'scheduled',
+    'running',
+    'error',
+    'done'
+);
+\end{lstlisting}
+
+Status ten opisuje cykl życia zadania,
+\begin{itemize}
+  \item new - zadanie jest nowe w systemie
+  \item scheduled - zadanie trafilo do kolejki
+  \item running - zadanie jest wykonywane przez pracownika
+  \item error - wystąpił bład podczas wykonywania zadania
+  \item done - zadanie zostało wykonane
+\end{itemize}
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE TYPE worker_status AS ENUM (
+    'busy',
+    'idle',
+    'error',
+    'not_responding'
+);
+\end{lstlisting}
+
+Status ten opisuje status pracownika.
+
+\begin{itemize}
+  \item busy - pracownik jest zajęty wykonywaniem zadania
+  \item idle - pracownik jest wolny do podjęcia pracy
+  \item error - pracownik w stanie błędu
+  \item not responding - nie można się połączyć z pracownikiem
+\end{itemize}
+
+
+
+\newpage
+\section {Tabele}
+
+Baza danych składa się z trzech tabel, zostaną one kolejno opisane w tym rozdziale.
+
+Pierwsza z nich była to tablica zawierająca definicję zadania do wykonania o następującej definicji;
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE TABLE jobs (
+    id integer NOT NULL,
+    description text NOT NULL,
+    status job_status NOT NULL,
+    param integer
+);
+\end{lstlisting}
+
+Id było to pole klucza tabeli, opis stanowił opis zadania, status jego cykl życia oraz param pole
+parametru wejściowego do zadania.
+
+
+Kolejną tablicą była tablica kolejki o następującej definicji:
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE TABLE queue (
+    id integer NOT NULL,
+    job integer NOT NULL
+);
+\end{lstlisting}
+
+Łączyła ona zadania oraz kolejność ich wykonania, nie była możliwe priorytetowanie zadań, co można bardzo
+prosto uwzględnić dodając dodatkowe polę i zmieniając funkcje przydzielającą zadania do komputerów wykonywujących.
+
+Ostatnią tablicą była tablica resulatatów o następującej strukturze:
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE TABLE results (
+    id integer NOT NULL,
+    job integer NOT NULL,
+    worker integer NOT NULL,
+    result integer
+);
+\end{lstlisting}
+
+Tabela ta przechowuje wyniki wykonanych zadań oraz informację który pracownik wykonał zadanie oraz jego rezultat.
+
+
+\newpage
+\section {Klucze zewnętrzne}
+
+Schemat posiadał następujące klucze zewnętrzne.
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+ALTER TABLE ONLY queue
+    ADD CONSTRAINT queue_job_fkey FOREIGN KEY (job)
+    REFERENCES jobs(id);
+
+ALTER TABLE ONLY results
+    ADD CONSTRAINT results_job_fk_fkey FOREIGN KEY (job) 
+    REFERENCES jobs(id);
+
+ALTER TABLE ONLY results
+    ADD CONSTRAINT results_woreker_fkey FOREIGN KEY (worker) 
+    REFERENCES workers(id);
+
+\end{lstlisting}
+
+Pierwszy służył do powiązania przechowywanej w kolejce id zadania oraz jego insatncją w tabeli zdań.
+
+Drugi łączył id wykonanego zadania z jego wpisem w tablicy zadań.
+
+Ostatni łączył id pracownika który wykonał wynik oraz jego reprezentację w tablicy pracowników.
+
+\newpage
+\section {Procedury}
+
+W bazie utworzone zostały następujące procedury ( wszystkie są podłączone jako triggery do tablic ):
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE FUNCTION add_job() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    BEGIN
+        IF NEW.status = 'new' THEN
+          INSERT INTO queue (job) VALUES (NEW.id);
+          UPDATE jobs SET status = 'scheduled' WHERE jobs.id = NEW.id;
+          RETURN NEW;
+        END IF;
+        RETURN NEW;
+    END
+$$;
+
+\end{lstlisting}
+
+Procedura ta upewnia się iż przy dodaniu nowego zadania zostanie ono wpisane do kolejki zadań oczekujących.
+Dodatkowo status zadania zostaję przez nią zmieniony z new na scheduled.
+
+
+
+Kolejną procedurą jest procedura uruchamiana przy dodawaniu wyników przez komputery,
+krok ten należy wykonać manualnie symulując długie zależności czasowe pomiędzy początkiem a końcem
+wykonania zadania (należy samemu upewnić się iż wpisujemy właściwe wartości zadania oraz workera).
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE FUNCTION add_results() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  UPDATE jobs SET status = 'done' WHERE jobs.id = NEW.job;
+  UPDATE workers SET status = 'idle' WHERE id = NEW.worker;
+  DELETE FROM queue WHERE queue.job = NEW.job;
+  RETURN NULL;
+END
+$$;
+
+\end{lstlisting}
+
+Ostatnią funkcją jest funkcja przydzielająca zadanie do komputera.
+Próbuję ona znaleść jaknajwięcej niezajętych pracowników i przypisać
+im zadania w kolejności trafiania do kolejki.
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE FUNCTION schedule() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE j record;
+BEGIN
+  FOR j IN SELECT id FROM workers WHERE status = 'idle' 
+  LIMIT (SELECT count(*) FROM full_queue WHERE status = 'scheduled') 
+    LOOP
+      
+      UPDATE jobs SET status = 'running' WHERE id = 
+        (SELECT job FROM queue INNER JOIN jobs ON queue.job = jobs.id 
+        WHERE jobs.status = 'scheduled' LIMIT 1);
+      UPDATE workers SET status = 'busy' WHERE id = j.id;
+    END LOOP;
+  RETURN NULL;
+  
+END
+$$;
+\end{lstlisting}
+
+\newpage
+\section {WIdoki i zapytania}
+
+
+W celu ułatwienia znajdowania problemów w procedurach utworzony został następujący widok w bazie danych:
+
+
+\begin{lstlisting}[
+           language=SQL,
+           showspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+CREATE VIEW full_queue AS
+ SELECT queue.id AS q_id,
+    jobs.id,
+    jobs.description,
+    jobs.status,
+    jobs.param
+   FROM (queue
+     LEFT JOIN jobs ON ((queue.job = jobs.id)));
+\end{lstlisting}
+
+Zapytanie to prezentuje dane zadania oraz jego pozycję w kolejcę.
+
+\end{document}
