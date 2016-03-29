@@ -1,3 +1,9 @@
 [submodule "mapgen/cairomm"]
 	path = mapgen/cairomm
 	url = git://git.cairographics.org/git/cairomm
+[submodule "studia/mars/googletest"]
+	path = studia/mars/googletest
+	url = https://github.com/google/googletest
+[submodule "studia/mars/thirdparty/googletest"]
+	path = studia/mars/thirdparty/googletest
+	url = https://github.com/google/googletest
