@@ -1,0 +1,262 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{fontspec}
+\usepackage{pythontex}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{babel}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Matematyka Dyskretna zestaw zadań 2\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\usepackage{xcolor,colortbl}
+
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\newcolumntype{b}{>{\columncolor{white}}c}
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Zadanie}
+
+W celu policzenia ile jest liczb niewiekszych od 2000 nie podzielnych przez 2,6,8 nalezy zauwazyc iz
+każda liczba podzielna przez 8 będzie podzielna przez 2, innymi słowy, odejmując wszystkie liczby podzielne
+przez dwa, odejmiemy także wszystkie podzielne przez 8. Możemy więc sprowadźić to samo zadanie do problemu
+ile jest liczb nie podzielnych przez 6 lub 2. Każda liczba podzielna przez 6 dzieli się przez dwa.
+Z podzielności przez 6 oraz 8 wynika zatem natychmiast podzielność przez 2.
+
+Jest 2000 liczb niemniejszych od 2000.
+
+Z czego 1000 dzieli się przez 2.
+
+Zostaje 1000 liczb nie podzielnych przez 2, i jest to wynik zadania.
+
+\section{Zadanie}
+
+W celu policzenia ilu kibiców dostało uraz głowy należy zauważyić iż jesli każdy dostał 
+jakiegoś urazu, mamy do czyenienia z przecięciem trzech grup, przy czym \(A\)- grupa
+odnosząca uraz głowy, \(B\)- grupa odnosząca uraz ręki \(C\) - Grupa odnoszaca uraz nogi.
+
+\begin{equation}
+\nonumber
+\mid B \mid = 15
+\end{equation}
+\begin{equation}
+\nonumber
+\mid C \mid = 17
+\end{equation}
+\begin{equation}
+\nonumber
+\mid A \cap B \mid = 8
+\end{equation}
+\begin{equation}
+\nonumber
+\mid A \cap C \mid = 11
+\end{equation}
+\begin{equation}
+\nonumber
+\mid B \cap C \mid = 10
+\end{equation}
+\begin{equation}
+\nonumber
+\mid A \cap B \cap C \mid = 5
+\end{equation}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(60:2cm) circle (1.5cm)}
+\def\thirdcircle{(0:2cm) circle (1.5cm)}
+\begin{tikzpicture}
+    \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.5]
+        \fill[red] \firstcircle;
+        \fill[green] \secondcircle;
+        \fill[blue] \thirdcircle;
+        \draw \firstcircle node[below] {$A$};
+        \draw \secondcircle node [above] {$B$};
+        \draw \thirdcircle node [below] {$C$};
+    \end{scope}
+\end{tikzpicture}
+
+W celu obliczenia mocy zbioru A możemy posłużyć się wzorem na obliczenia mocy uniwersum na podstawie mocy zbioru:
+
+\begin{equation}
+  \mid U \mid = \mid A \mid + \mid B \mid + \mid C \mid - \mid A \cap B \mid - \mid A \cap C \mid - \mid B \cap C \mid + \mid A \cap B \cap C \mid
+\end{equation}
+
+Wystarczy przekształcić ten wzór w następujący sposób:
+
+\begin{equation}
+  \nonumber
+  \mid A \mid = \mid U \mid - \mid B \mid - \mid C \mid + \mid A \cap B \mid +
+\end{equation}
+\begin{equation}
+  \nonumber
+  + \mid A \cap C \mid + \mid B \cap C \mid - \mid A \cap B \cap C \mid = 
+\end{equation}
+\begin{equation}
+  = 40 - 15 - 17 + 8 + 11 + 10 - 5 = 32
+\end{equation}
+
+
+\section{Zadanie}
+
+Zapiszmy ile wynosi ciąg tworzący ciągu:
+
+\begin{equation}
+  a_n = n + 1
+\end{equation}
+
+Podstawiając do definicji otrzymujemy:
+
+\begin{equation}
+  \sum_{n=0}^{\infty} (n + 1)* x^n = \sum_{n=0}^{\infty} \frac{d}{dx}x^{n+1}=\frac{d}{dx}\sum_{n=0}^{\infty} x^{n+1} = \frac{d}{dx} * \frac{x}{1 - x} = \frac{1}{(1-x)^2}
+\end{equation}
+
+W przedostatnim przejściu korzystamy z tego iż szereg tworzący samego ciągu jedynek wynosi:
+
+\begin{equation}
+  G(x) = \sum_{n=0}^{\infty}x^n = \frac{1}{1 - x} 
+\end{equation}
+
+
+W przypadku drugiego ciągu zaczynamy od:
+
+\begin{equation}
+  a_n = n * 5 ^n 
+\end{equation}
+
+Znów zaczynając od definicji mamy:
+
+\begin{equation}
+  \sum_{n=0}^{\infty} (n * 5^n )* x^n
+\end{equation}
+
+Podkładając \(y = 5x\) mamy, następnie stosujemy przesunięcie:
+
+\begin{equation}
+  \sum_{n=0}^{\infty} (n)* y^n = y^{-1} * \sum_{n=-1}^{\infty} (n + 1)* y^n = \frac{1}{y} * \frac{1}{(1-y)^2}= \frac{1}{y(1-y)^2}= \frac{1}{5x(1-5x)^2}
+\end{equation}
+
+\section{Zadanie}
+
+Wzór rekurencyjny na ciąg wynosi:
+
+\begin{equation}
+  a_n = a_{n-1} * 1.6 + 0.4
+\end{equation}
+
+Warunek początkowy zaś:
+
+\begin{equation}
+  a_0 = 1000
+\end{equation}
+
+Doliczyć można łatwo \(a_1\):
+\begin{equation}
+  a_1 = a_0 * 1.6 + 400 = 2000
+\end{equation}
+
+Korzystając z twierdzania numer 3 z wykładu 8 wiemy, iż wzór jawny na \(a_n\) wynosi:
+
+\begin{equation}
+  a_n = c * 1.6^n + d
+\end{equation}
+
+Podstawiając do wzoru pierwszy oraz drugi wyraz, otrzymujemy:
+\begin{equation}
+  c + d = 1000
+\end{equation}
+
+Oraz
+
+\begin{equation}
+  1.6 * c + d = 2000
+\end{equation}
+
+Odejmując stronami otrzymujemy:
+
+\begin{equation}
+  0.6 * c = 1000
+\end{equation}
+
+Wzór jawny na zysk wynosi zatem:
+
+\begin{equation}
+  a_n = 1666 \frac{2}{3} * 1.6^n - 666\frac{2}{3} = 1000
+\end{equation}
+
+
+\end{document}
