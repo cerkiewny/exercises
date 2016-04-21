@@ -2,6 +2,6 @@
 
 namespace mars {
 
-unsigned int memory::memsize = 8000;
+const unsigned int memory::memsize = 8000;
 
 }

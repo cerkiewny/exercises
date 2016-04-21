@@ -1,9 +1,14 @@
+#pragma once
 
 #include <vector>
+#include <queue>
 #include "process.hpp"
 
 class scheduler{
 
   private:
-    std::vector <process> processes_;
+    std::vector<std::queue<process>> programs;
+
+  public:
+    int turn;
 };
