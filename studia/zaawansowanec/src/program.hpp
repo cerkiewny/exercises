@@ -9,6 +9,7 @@ class program {
  public:
   std::vector<instruction> instructions;
   void addinstr(instruction newinstr);
+  program();
 };
 
 }

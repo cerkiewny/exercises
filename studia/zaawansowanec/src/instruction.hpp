@@ -28,7 +28,7 @@ class instruction {
     };
 
     enum modifiers {
-      DEFAULT,
+      DEF,
       A,
       B,
       AB,
@@ -38,12 +38,11 @@ class instruction {
       I
     };
 
-    address a;
-    address b;
+    address address_a;
+    address address_b;
     kinds kind;
-    instruction () : a(), b(){
-      kind = DAT;
-    };
+    modifiers modifier;
+    instruction ();
 };
 
 }

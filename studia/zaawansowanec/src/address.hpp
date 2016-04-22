@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 namespace mars {
 
@@ -40,3 +41,5 @@ class address {
     virtual int calculate(int where) { return where; }
 };
 }
+
+std::ostream& operator<<(std::ostream& os, const mars::address& a);

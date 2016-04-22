@@ -4,11 +4,15 @@
 #include <queue>
 #include "process.hpp"
 
+namespace mars {
+
 class scheduler{
 
   private:
     std::vector<std::queue<process>> programs;
 
   public:
-    int turn;
+    int exec_turn();
+
 };
+}

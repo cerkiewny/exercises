@@ -1,4 +1,5 @@
 #include "loader.hpp"
+#include <locale>
 #include <boost/bind.hpp>
 #include <boost/spirit/include/qi_char_class.hpp>
 
@@ -9,7 +10,7 @@ namespace qi = boost::spirit::qi;
 address loader::curaddr_one = {}; 
 address loader::curaddr_two = {};
 address::modes loader::curmode = address::modes::DIRECT;
-instruction::modifiers loader::curmodif = instruction::modifiers::DEFAULT;
+instruction::modifiers loader::curmodif = instruction::modifiers::DEF;
 int loader::curaddr = 0;
 program loader::program_ = {};
 
@@ -18,7 +19,7 @@ void loader::set_modif(instruction::modifiers which){
 }
 void loader::start_creation(){
   address tmp(0, address::modes::DIRECT);
-  loader::curmodif = instruction::modifiers::DEFAULT;
+  loader::curmodif = instruction::modifiers::DEF;
   loader::curaddr_one = tmp; 
   loader::curaddr_two = tmp;
 }
@@ -34,6 +35,8 @@ void loader::set_cur_mode(address::modes which){
 }
 
 void loader::finish_addr() {
+  curaddr_one.offset = loader::curaddr;
+  curaddr_one.mode = loader::curmode;
   loader::curmode = address::modes::DIRECT;
   loader::curaddr = 0;
 }
@@ -99,33 +102,55 @@ struct redcode_gr : qi::grammar<Iterator, std::string(), ascii::space_type> {
 };
 
 void loader::create_instr(const std::string what){
-  std::cout << what << std::endl;
   instruction newinstr;
+  curaddr_two.offset = loader::curaddr;
+  curaddr_two.mode = loader::curmode;
   if(what == "DAT"){
+    newinstr.kind = instruction::kinds::DAT;
   } else if (what == "MOV"){
+    newinstr.kind = instruction::kinds::MOV;
   } else if (what == "ADD"){
+    newinstr.kind = instruction::kinds::ADD;
   } else if (what == "SUB"){
+    newinstr.kind = instruction::kinds::SUB;
   } else if (what == "MUL"){
+    newinstr.kind = instruction::kinds::MUL;
   } else if (what == "DIV"){
+    newinstr.kind = instruction::kinds::DIV;
   } else if (what == "MOD"){
+    newinstr.kind = instruction::kinds::MOD;
   } else if (what == "JMP"){
+    newinstr.kind = instruction::kinds::JMP;
   } else if (what == "JMZ"){
+    newinstr.kind = instruction::kinds::JMZ;
   } else if (what == "JMN"){
+    newinstr.kind = instruction::kinds::JMN;
   } else if (what == "DJN"){
+    newinstr.kind = instruction::kinds::DJN;
   } else if (what == "SPL"){
+    newinstr.kind = instruction::kinds::SPL;
   } else if (what == "SLT"){
+    newinstr.kind = instruction::kinds::SLT;
   } else if (what == "CMP"){
+    newinstr.kind = instruction::kinds::CMP;
   } else if (what == "SEQ"){
+    newinstr.kind = instruction::kinds::SEQ;
   } else if (what == "SNE"){
+    newinstr.kind = instruction::kinds::SNE;
   } else if (what == "NOP"){
+    newinstr.kind = instruction::kinds::NOP;
   } else if (what == "LDP"){
+    newinstr.kind = instruction::kinds::LDP;
   } else if (what == "STP"){
+    newinstr.kind = instruction::kinds::STP;
   }
+  newinstr.modifier = curmodif;
+  newinstr.address_a = curaddr_one;
+  newinstr.address_b = curaddr_two;
   loader::program_.addinstr(newinstr); 
 }
 
 program loader::load(std::string filename){
-  program ret;
   std::ifstream in (filename);
   std::string tmp;
 
@@ -133,20 +158,22 @@ program loader::load(std::string filename){
   typedef std::string::const_iterator iterator_type;
   typedef mars::redcode_gr<iterator_type> redcode_gram;
   redcode_gram gram;
-  while(getline(in, tmp)){
+  while(getline(in, tmp)) {
+    std::transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
     std::string::const_iterator iter = tmp.begin();
     std::string::const_iterator end = tmp.end();
     std::string res;
     bool r = phrase_parse (iter, end, gram, ascii::space); 
 
     if ( r && iter == end ) {
-      std::cout << "parsing command sucess" << std::endl;
+      //std::cout << "parsing command sucess" << std::endl;
     } else {
-      std::cout << "parsing command failed" << std::endl;
+      //std::cout << "parsing command failed" << std::endl;
     }
 
   }
-
+  program ret = program_;
+  program_ = program();
   return ret;
 }
 
