@@ -43,3 +43,13 @@ class address {
 }
 
 std::ostream& operator<<(std::ostream& os, const mars::address& a);
+
+inline bool operator==(const mars::address &lhs, const mars::address &rhs){
+  if(lhs.mode == rhs.mode && lhs.offset == rhs.offset)
+    return true;
+  return false;
+}
+
+inline bool operator!=(const mars::address &lhs, const mars::address &rhs){
+  return !(rhs == lhs);
+}

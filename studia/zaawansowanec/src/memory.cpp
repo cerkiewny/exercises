@@ -110,6 +110,7 @@ void memory::exec_command(unsigned int which, process &proc){
     } else if (cur_instr.kind == instruction::kinds::MOV) {
       mem.at(addr_b) = mem.at(addr_a);
     } else if (cur_instr.kind == instruction::kinds::ADD) {
+      mem.at(addr_b); 
     } else if (cur_instr.kind == instruction::kinds::SUB) {
     } else if (cur_instr.kind == instruction::kinds::MUL) {
     } else if (cur_instr.kind == instruction::kinds::DIV) {
@@ -117,16 +118,47 @@ void memory::exec_command(unsigned int which, process &proc){
     } else if (cur_instr.kind == instruction::kinds::JMP) {
       proc.exec_addr = addr_a;
     } else if (cur_instr.kind == instruction::kinds::JMZ) {
+      if(addr_a == 0){
+        proc.exec_addr = addr_a;
+      }
     } else if (cur_instr.kind == instruction::kinds::JMN) {
+      if(addr_a != 0){
+        proc.exec_addr = addr_a;
+      }
     } else if (cur_instr.kind == instruction::kinds::DJN) {
+      addr_a --;
+      if(addr_a != 0){
+        proc.exec_addr = addr_a;
+      }
     } else if (cur_instr.kind == instruction::kinds::SPL) {
-    } else if (cur_instr.kind == instruction::kinds::SLT) {
+      process newproc(addr_a);
+      programs.at(turn).push(newproc);
     } else if (cur_instr.kind == instruction::kinds::CMP) {
+      if(mem.at(addr_a) == mem.at(addr_b)){
+        proc.exec_addr ++;
+        proc.exec_addr %= memsize;
+      }
     } else if (cur_instr.kind == instruction::kinds::SEQ) {
+      if(mem.at(addr_a) == mem.at(addr_b)){
+        proc.exec_addr ++;
+        proc.exec_addr %= memsize;
+      }
     } else if (cur_instr.kind == instruction::kinds::SNE) {
+      if(mem.at(addr_a) != mem.at(addr_b)){
+        proc.exec_addr ++;
+        proc.exec_addr %= memsize;
+      }
+    } else if (cur_instr.kind == instruction::kinds::SLT) {
+      if(addr_a < addr_b){
+        proc.exec_addr ++;
+        proc.exec_addr %= memsize;
+      }
+
     } else if (cur_instr.kind == instruction::kinds::NOP) {
     } else if (cur_instr.kind == instruction::kinds::LDP) {
+      std::cout << "LDP is not supported. for now" << std::endl;
     } else if (cur_instr.kind == instruction::kinds::STP) {
+      std::cout << "STP is not supported for now" << std::endl;
     }
   } catch (command_invalid in) {
     valid = false;

@@ -48,4 +48,16 @@ class instruction {
 
 }
 
+inline bool operator==(const mars::instruction &lhs, const mars::instruction &rhs){
+  if(lhs.address_a == rhs.address_b &&
+     lhs.kind == rhs.kind &&
+     lhs.modifier == rhs.modifier )
+    return true;
+  return false;
+}
+
+inline bool operator!=(const mars::instruction &lhs, const mars::instruction &rhs){
+  return !(rhs == lhs);
+}
+
 std::ostream& operator<<(std::ostream& os, const mars::instruction& p);
