@@ -1,8 +1,9 @@
 #pragma once
 
-#include "program.hpp"
+#include <queue>
 #include "instruction.hpp"
-#include "scheduler.hpp"
+#include "program.hpp"
+#include "process.hpp"
 
 namespace mars {
 
@@ -17,8 +18,8 @@ class memory {
   void load_all(std::vector<program> warriors);
   void print(unsigned int location);
   memory();
-  scheduler shed;
   void exec_turns(int howmany);
+  std::vector<std::queue<process>> programs;
 
 };
 

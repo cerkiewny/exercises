@@ -7,7 +7,7 @@ namespace mars {
 unsigned int memory::memsize = 8000;
 unsigned int memory::memoffset = 5000;
 
-memory::memory() : mem(memory::memsize), shed(){
+memory::memory() : mem(memory::memsize), programs(){
   
 }
 
@@ -53,7 +53,7 @@ void memory::load(unsigned int where, program p){
 
 void memory::exec_turns(int howmany){
   for(int i = 0; i < howmany; i ++){
-    int tmp = shed.exec_turn(); 
+    int tmp = 0;
     if(tmp > 0){
       std::cout << "winner is warrior number" << tmp << std::endl; 
       return;

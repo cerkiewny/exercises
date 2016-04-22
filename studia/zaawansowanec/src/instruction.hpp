@@ -3,6 +3,7 @@
 #include "address.hpp"
 
 namespace mars { 
+
 class instruction {
   public:
     enum kinds {

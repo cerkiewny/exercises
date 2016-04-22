@@ -38,8 +38,8 @@ class address {
 
     int offset;
     modes mode;
-    virtual int calculate(int where) { return where; }
 };
+
 }
 
 std::ostream& operator<<(std::ostream& os, const mars::address& a);
