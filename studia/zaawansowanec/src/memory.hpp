@@ -19,7 +19,16 @@ class memory {
   void print(unsigned int location);
   memory();
   void exec_turns(int howmany);
+  void exec_command(unsigned int which, process &proc);
   std::vector<std::queue<process>> programs;
+ private:
+  unsigned int resolve_adr(address which, unsigned int where);
+  class command_invalid{
+    public:
+      command_invalid(std::string why) : why(why){};
+      std::string why;
+  };
+  int turn;
 
 };
 
