@@ -108,10 +108,15 @@ void memory::exec_command(unsigned int which, process &proc){
     if(cur_instr.kind == instruction::kinds::DAT){
       valid = false;
     } else if (cur_instr.kind == instruction::kinds::MOV) {
+
       mem.at(addr_b) = mem.at(addr_a);
+      if(cur_instr.modifier == instruction::modifiers::A){
+      }
+
     } else if (cur_instr.kind == instruction::kinds::ADD) {
       mem.at(addr_b); 
     } else if (cur_instr.kind == instruction::kinds::SUB) {
+
     } else if (cur_instr.kind == instruction::kinds::MUL) {
     } else if (cur_instr.kind == instruction::kinds::DIV) {
     } else if (cur_instr.kind == instruction::kinds::MOD) {

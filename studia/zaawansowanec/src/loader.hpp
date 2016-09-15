@@ -24,6 +24,8 @@ class loader {
     static instruction::modifiers curmodif;
     static int curaddr;
     static void set_modif(instruction::modifiers which);
+    static int curline;
+    static void check_line(int line);
   private:
     static program program_;
     static address curaddr_one;

@@ -1,0 +1,234 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 10-bit encoding that has 256 glyphs
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{pgfplots} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{enumerate}
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\usepackage{listings}
+
+\pgfplotsset{compat=1.10}
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%   TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+    \normalfont \normalsize 
+    \textsc{Politechnika Warszawska} \\ [25pt] % Your university, school and/or department name(s)
+    \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+    \huge Obliczenia rozproszone w klastrach i gridach: Projekt dodatkowy\\ % The assignment title
+    \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+    System zarządzania klastrem StormMQ. Historia, budowa, funkcjonalność, specyficzne cechy.
+}
+
+\author{Mateusz Starzycki} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+\parskip 5 mm
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Wstęp}
+
+StormMQ jest to system kolejkowania wiadomości zwany inaczej brokerem albo oprogramowaniem pośredniczącym dostarczającym wiadomości do 
+komputerów w klastrze.
+
+Klaster - systemy wielokomputerowe składające się z wielu maszyn powiązanych ze sobą fizycznie i logicznie
+
+Oprogramowanie pośredniczące dostarczające wiadomości (message oriented middleware, message broker) - oprogramowanie umożliwiające 
+traktowanie zadań jako wiadomości, pośredniczy ono przy wymianie oraz dostarczeniu komunikatów do odpowiednich indywidualnych serwerów.
+Oprogramowanie to tłumaczy także protokół nadawcy na protokół odbiorcy. Jest to wzorzec projektowy który ma na celu:
+\begin{itemize}
+    \item Przekazanie wiadomości do 1 lub więcej odbiorców.
+    \item Przekształcenie wiadomości do alternatywnej reprezentacji.
+    \item Agregację oraz enkapsulację a także połaczenie danych z powrotem w całość.
+    \item Interakcję z zewnętrznymi serwisami składowania oraz wzbogacania wiadomości.
+    \item Komunikacja z serwisami udostępniającymi dostęp do sieci.
+    \item Obsługa błędów oraz wydarzeń systemowych.
+    \item Dostarczenie wiadomości na podstawie treści i nagłowka na zasadzie producent, subskrybent.
+\end{itemize}
+
+\section{Historia}
+
+\subsection{Wydarzenia}
+
+\begin{itemize}
+    \item 1900 - telegramy wysyłane metodą zapisz i przekaż
+    \item 1948 - elektroniczne maszyny telegraficzne (np. Plan 55-A)
+    \item 1964 - IBM system pierszy switching wiadomości
+    \item 1965 - Pierwsza poczta elektroniczna
+    \item 1971 - IBM TCAM pierwsze rozwiązanie kolejkowania wiadomości, funkcjonowało do 1990
+    \item 1980 - Rozwój protokołu SMTP powstaje system Tibico w sektorze giełdowym
+    \item 1992 - IBM uruchamia MQSeries obecnie WebshareMQ
+    \item 2001 - Firma Sun wypuszcza Java JMS 
+    \item 2006 - Powstaje AMPQP - grupa stworzona przez banki inwestycyjne
+    \item 2009 - Rozwiązania w chmurze umożlwiają wzrost popularności systemu Storm MQ
+\end{itemize}
+
+\subsection{Założenie Firmy}
+
+StormMQ zostało założone w roku 2009 przez Eamon Walshe oraz Raphaela ‘Raph’ Cohn oraz kilku inżynierów
+pracujących wcześniej w firmie British Telecommunication.
+Dostrzegli oni potrzebę na szybką w konfiguracji oraz łatwej we wdrożeniu kolejki obsługi
+wiadomości. W grupie BT zajmowali się oni poprawą infrastruktury oraz redukcją kosztów projektów.
+Bardzo często ich praca sprowadzała się także do obserwacji przyczyn które powodowały że projekty kończyły się
+niepowodzeniem. Jedną z częstszych przyczyn okazały się problemy z klastrami; serwery były bardzo kosztowne w utrzymaniu,
+wdrożeniu oraz same urządzenia wraz z miejscem ich przechowywania podnosiły cenę takich rozwiązań.
+Próbowano różne podejścia w celu zniwelowania tego problemu. Modele płatności za wirtualne serwery sprawiły jednak
+że i ta opcja była bardzo droga. 
+
+Zidentyfikowana została zatem potrzeba innego podejścia do problemu - zarządzanie dynamicznymi zasobami zamiast kupowania
+wirtualnych serwerów. W tym celu stworzony został system StormMQ. Jest on oparty o protokół AMQP oraz
+umożliwia przesyłanie wiadomości pomiędzy serwisami na zasadzie producent, subskrybent.
+W przypadku zarządzania dynamicznymi zasobami istnieje możliwość bardzo prostego odłączania oraz przyłączania zasobów.
+Jedynym problemam jest rozwiązanie komunikacji która zwykle odbywała się przy pomocy skomplikowanych systemów opartych
+na bazie danych. W celu ułatwienia stworzony został system pośredni StormMQ, oparty o "chmurę", gotowy do użycia 
+łatwy do skonfigurowania.
+
+\subsection{Problemy ze wcześniejszymi technologiami}
+
+Rozdział ten prezentuje największe problemy we wcześniejszych technologiach stosowanych do
+zarządzania komunikacją w klastrze:
+
+\subsection{Wirtualne serwery}
+
+Bardzo drogie w większych ilościach, ciężkie w skalowaniu, dużo cięższe w skalowaniu w "dół".
+znalezienia oraz naprawy.
+
+
+\subsection{Serwery}
+
+Potrzeba zarządzania, przechowania, ułożenia protokołu komunikacji. Drogie w utrzymaniu.
+Bardzo ciężkie we wdrożeniu. Infrastruktura zabiera tygodnie zanim urządzenia są u klienta,
+do tego przy wdrożeniu komunikacji potrzebne są znaczne nakłady IT w celu skonfigurowania serwerów.
+Ceny konsulatantów są bardzo duże, odpowiedzilaność znajduje się po stronie użytkownika.
+
+\subsection{Bazy danych}
+
+Rozwiązania oparte o bazy danych są bardzo skomplikowane, konsultanci są bardzo drodzy,
+odpowiedzialność znajduje się po stronie użytkownika, skalowalność jest bardzo ciężka bez
+dużych nakładów finansowych.
+
+\section{Cechy szczególne}
+
+StormMQ powstał jako łatwy do konfiguracji system kolejkowania wiadomości, jest to zdecydowanie
+najistotniejsza oraz najbardziej charakterystyczna cecha systemu.
+
+Kolejną nietypową cechą jest fakt iż jest on oparty o 'chmurę' cała infrastruktóra znajduje się
+po stronie firmy StormMQ.
+
+Dodatkowo jest on darmowy do pięciu połączeń, umożliwia to łatwe testowanie systemu.
+
+Ważną cechą jest także model płatności - nieograniczone jest ilość przesłanych wiadomości a ilość
+danych wykupionych, jeśli wiadomości są przetwarzene odpowiednio szybko koszty eksploatacji systemu
+są niskie.
+
+Dobra skalowalność to kolejna cecha systemu, pozwala on na osiągnięcie transferu nawet do 850000 wiadomości
+na sekundę.
+
+Protokół działa na zasadzie zapisz i przekaż, niebezpieczeństwo utracenia wiadomości jest minimalne.
+
+System umożliwia na dynamiczne zarządzani subskrybentami.
+
+Bezpieczeństwo wiadomości - domyślnie kolejka działa w trybie enkrypcji danych klienta.
+
+\section{Największe problemy w przeszłości oraz ich rozwiązania}
+
+W przypadku problemów technicznych z częścią serwerów możliwe jest całkowita
+awaria systemu. StormMQ star się nie dopuścić do problemy z komunikacją. Twórcy
+podczas swojej kariery zauważyli iż zamiast automatycznego odzyskiwania systemu
+łatwiej jest niedopuścić do problemów z  komunikacją lub awariami serwerów.
+W tym celu wprowadzili proces wieloktrotnego łączenia komputerów redundantnymi połączeniami.
+Dodatkowo serwery mają taki sam, lub bardzo zbliżony hardware oraz system operacyjny.
+Procedura restartu serwera w przypadku awarii w systemie StormMQ to załadowanie całkowitego
+obrazu systemu oraz programu z zewnętrznej pamięci.
+
+Problemy zależności zachowań programu od systemu operacyjnego. Wszystkie systemy w firmie
+StormMQ mają to samo jądro systemu. Dodatkowo firma stara się mieć wszystkie źródła do systemów oraz
+oprogramowania które instalują. W przyszłości planują oni nawet utworzenie własnej dystrybucji linuxa.
+
+Problemy ludzkie, złe połączenia, zamiany serwerów, zmiany kabli. Firma StormMQ próbuje stosować procesy
+uniemożliwiające lub minimalizującę impakt ludzi na system.
+
+Problem rozdzielonego umysłu - część komunikacji umiera, zostaje wybrany nowy "master", sieć znów zaczyna działać
+i dwa różne serwery sądzą że są serwerami nadrzędnymi. StormMQ rozwiązuje ten problem próbując uniknąć go. Podczas
+wielu lat testowania założyciele próbowali rozwiązać problem różnymi metodami. Koniec końców zdecydowali iż, najłatwiejsze
+i najtańsze podejście to próba niedpouszczenia do problemu. Koszty manualnego odwracania awarii są dużo tańsze niż próba
+rozwinięcia automatycznego systemu.
+
+\section{Zastosowania}
+
+W rozdziale tym znajdują się przykładowe zastosowania dla systemu.
+
+\begin{itemize}
+    \item{Telekomunikacja} Stosowane do udostępnienia dodatkowych serwisów w telekomunikacji.
+    \item{Finanse} Stosowane do zarządzania klientami oraz płatnościami.
+    \item{Giełda} Stosowane do przewidywania przyszłych zachowań giełdowych oraz handlowania na akcjami.
+    \item{Logistyka} Stosowane do zarządzania danymi diagnostycznymi pojzadów.
+\end{itemize}
+
+\section{Przyszłość}
+
+Przyszłość systemu StormMQ maluje się w różnych barwach.
+Jest to jeden z nietypowych systemów z dość niskim oraz sprawiedliwym systemem płatności,
+jednocześnie podejście użytkowników stale zmienia się utrudniając jakiekolwiek zarobki.
+Użytkownicy coraz bardziej zawyżają swoje wymagania co do jakości produktów oraz zaniżają
+ceny, oczekują oni cen porównywalnych do aplikacji w "apple store".
+
+Z drugiej strony niekożystne decyzje finansowe sprawiły iż firma straciła spore źródło dochodu.
+Zaangażowanie w kontrakt z jednym dużym klientem zamiast wieloma małymi podważyło stabilność
+finansową firmy.
+
+Wraz z rozwojem własnej dystrybucji systemu Linux potencjalnie system może stać się jednak dużo bardziej stabilny
+umożliwiając pozyskanie nowych klientów oraz podwyżenie niezwodności systemu.
+
+\end{document}

@@ -12,6 +12,7 @@ address loader::curaddr_two = {};
 address::modes loader::curmode = address::modes::DIRECT;
 instruction::modifiers loader::curmodif = instruction::modifiers::DEF;
 int loader::curaddr = 0;
+int loader::curline = 0;
 program loader::program_ = {};
 
 void loader::set_modif(instruction::modifiers which){
@@ -39,6 +40,13 @@ void loader::finish_addr() {
   curaddr_one.mode = loader::curmode;
   loader::curmode = address::modes::DIRECT;
   loader::curaddr = 0;
+}
+
+void loader::check_line(int line){
+  if(curline != line){ 
+    std::cout << "wrong line number for line " << line << " expected " << loader::curline << std::endl;
+  }
+  loader::curline ++;
 }
 
 namespace ascii = boost::spirit::ascii;
@@ -91,7 +99,7 @@ struct redcode_gr : qi::grammar<Iterator, std::string(), ascii::space_type> {
       lexeme["LDP" >> eps[&loader::start_creation] >> -comm_mod >> *ascii::space >> address[&loader::finish_addr] >> *ascii::space >> -(',' >> *ascii::space  >> address)] >> eps[boost::bind(&loader::create_instr, "LDP")] |
       lexeme["STP" >> eps[&loader::start_creation] >> -comm_mod >> *ascii::space >> address[&loader::finish_addr] >> *ascii::space >> -(',' >> *ascii::space  >> address)] >> eps[boost::bind(&loader::create_instr, "STP")];
 
-    start = *(command_standard | (lexeme[';' >> +(char_)]));
+    start = int_[&loader::check_line] >> +( command_standard | (lexeme[';' >> +(char_)]));
   }
 
   qi::rule<Iterator, std::string(), ascii::space_type> start;
@@ -151,6 +159,7 @@ void loader::create_instr(const std::string what){
 }
 
 program loader::load(std::string filename){
+  loader::curline = 0;
   std::ifstream in (filename);
   std::string tmp;
 
@@ -168,7 +177,7 @@ program loader::load(std::string filename){
     if ( r && iter == end ) {
       //std::cout << "parsing command sucess" << std::endl;
     } else {
-      //std::cout << "parsing command failed" << std::endl;
+      std::cout << "parsing command failed" << std::endl;
     }
 
   }

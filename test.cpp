@@ -1,43 +1,21 @@
-template <typename T>
-struct Container
-{};
+#include <iostream>
 
+int main(){
+  int n;
+  std::cin>> n;
+  int ret = 0;
+  
+  int cur = 1;
+  int prev = 0;
+  for(int i = 0 ; i < n; i ++){
+ 
+    int tmp = cur + prev;
 
-struct Kernel {
-typedef int Nested;
-};
+    prev = cur;
+    cur = tmp;
+    ret += cur;
 
-
-template <class K,
-          class C = Container<typename K::Nested*> >
-struct Poly
-{};
-
-
-// if f() gets commented it compiles
-template<class T>
-Poly<T>* 
-f()
-{ 
-    return 0;
+  }
+  std::cout << cur << std::endl;
 }
 
-
-//template<class T2, class T1> // this compiles
-template<class T1, class T2>
-void
-fails(T1, 
-      Poly<T2> *)
-{}
-
-
-// if f() is moved here it also compiles
-
-int main()
-{  
-    Poly<Kernel> * poly = 0;
-
-    fails(0, poly);
-
-    return 0;
-}
